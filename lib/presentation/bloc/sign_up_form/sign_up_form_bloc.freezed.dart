@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SignInFormEvent {
+mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -44,7 +44,7 @@ mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signInWithEmail,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) =>
@@ -52,7 +52,7 @@ mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) =>
@@ -60,7 +60,7 @@ mixin _$SignInFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signInWithEmail,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -69,23 +69,23 @@ mixin _$SignInFormEvent {
 }
 
 /// @nodoc
-abstract class $SignInFormEventCopyWith<$Res> {
-  factory $SignInFormEventCopyWith(
+abstract class $SignUpFormEventCopyWith<$Res> {
+  factory $SignUpFormEventCopyWith(
           SignUpFormEvent value, $Res Function(SignUpFormEvent) then) =
-      _$SignInFormEventCopyWithImpl<$Res, SignUpFormEvent>;
+      _$SignUpFormEventCopyWithImpl<$Res, SignUpFormEvent>;
 }
 
 /// @nodoc
-class _$SignInFormEventCopyWithImpl<$Res, $Val extends SignUpFormEvent>
-    implements $SignInFormEventCopyWith<$Res> {
-  _$SignInFormEventCopyWithImpl(this._value, this._then);
+class _$SignUpFormEventCopyWithImpl<$Res, $Val extends SignUpFormEvent>
+    implements $SignUpFormEventCopyWith<$Res> {
+  _$SignUpFormEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -98,13 +98,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res, _$InitialImpl>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -115,7 +115,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'SignInFormEvent.initial()';
+    return 'SignUpFormEvent.initial()';
   }
 
   @override
@@ -168,7 +168,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signInWithEmail,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -179,7 +179,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -190,7 +190,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signInWithEmail,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -207,38 +207,38 @@ abstract class _Initial implements SignUpFormEvent {
 }
 
 /// @nodoc
-abstract class _$$SignInWithEmailImplCopyWith<$Res> {
-  factory _$$SignInWithEmailImplCopyWith(_$SignInWithEmailImpl value,
-          $Res Function(_$SignInWithEmailImpl) then) =
-      __$$SignInWithEmailImplCopyWithImpl<$Res>;
+abstract class _$$SignUpWithEmailImplCopyWith<$Res> {
+  factory _$$SignUpWithEmailImplCopyWith(_$SignUpWithEmailImpl value,
+          $Res Function(_$SignUpWithEmailImpl) then) =
+      __$$SignUpWithEmailImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SignInWithEmailImplCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res, _$SignInWithEmailImpl>
-    implements _$$SignInWithEmailImplCopyWith<$Res> {
-  __$$SignInWithEmailImplCopyWithImpl(
-      _$SignInWithEmailImpl _value, $Res Function(_$SignInWithEmailImpl) _then)
+class __$$SignUpWithEmailImplCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$SignUpWithEmailImpl>
+    implements _$$SignUpWithEmailImplCopyWith<$Res> {
+  __$$SignUpWithEmailImplCopyWithImpl(
+      _$SignUpWithEmailImpl _value, $Res Function(_$SignUpWithEmailImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$SignInWithEmailImpl implements _SignInWithEmail {
-  const _$SignInWithEmailImpl();
+class _$SignUpWithEmailImpl implements _SignUpWithEmail {
+  const _$SignUpWithEmailImpl();
 
   @override
   String toString() {
-    return 'SignInFormEvent.signInWithEmail()';
+    return 'SignUpFormEvent.signInWithEmail()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignInWithEmailImpl);
+        (other.runtimeType == runtimeType && other is _$SignUpWithEmailImpl);
   }
 
   @override
@@ -285,7 +285,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signInWithEmail,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -296,7 +296,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -307,7 +307,7 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signInWithEmail,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -319,8 +319,8 @@ class _$SignInWithEmailImpl implements _SignInWithEmail {
   }
 }
 
-abstract class _SignInWithEmail implements SignUpFormEvent {
-  const factory _SignInWithEmail() = _$SignInWithEmailImpl;
+abstract class _SignUpWithEmail implements SignUpFormEvent {
+  const factory _SignUpWithEmail() = _$SignUpWithEmailImpl;
 }
 
 /// @nodoc
@@ -334,13 +334,13 @@ abstract class _$$EmailOnChangedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$EmailOnChangedImplCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res, _$EmailOnChangedImpl>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$EmailOnChangedImpl>
     implements _$$EmailOnChangedImplCopyWith<$Res> {
   __$$EmailOnChangedImplCopyWithImpl(
       _$EmailOnChangedImpl _value, $Res Function(_$EmailOnChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -366,7 +366,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
 
   @override
   String toString() {
-    return 'SignInFormEvent.emailOnChanged(email: $email)';
+    return 'SignUpFormEvent.emailOnChanged(email: $email)';
   }
 
   @override
@@ -380,7 +380,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @override
   int get hashCode => Object.hash(runtimeType, email);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -430,7 +430,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signInWithEmail,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -441,7 +441,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -452,7 +452,7 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signInWithEmail,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -469,7 +469,7 @@ abstract class _EmailOnChanged implements SignUpFormEvent {
 
   String get email;
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmailOnChangedImplCopyWith<_$EmailOnChangedImpl> get copyWith =>
@@ -487,13 +487,13 @@ abstract class _$$PasswordOnChangedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$PasswordOnChangedImplCopyWithImpl<$Res>
-    extends _$SignInFormEventCopyWithImpl<$Res, _$PasswordOnChangedImpl>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$PasswordOnChangedImpl>
     implements _$$PasswordOnChangedImplCopyWith<$Res> {
   __$$PasswordOnChangedImplCopyWithImpl(_$PasswordOnChangedImpl _value,
       $Res Function(_$PasswordOnChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -519,7 +519,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
 
   @override
   String toString() {
-    return 'SignInFormEvent.passwordOnChanged(password: $password)';
+    return 'SignUpFormEvent.passwordOnChanged(password: $password)';
   }
 
   @override
@@ -534,7 +534,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @override
   int get hashCode => Object.hash(runtimeType, password);
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -584,7 +584,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignInWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signInWithEmail,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
   }) {
@@ -595,7 +595,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignInWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
   }) {
@@ -606,7 +606,7 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignInWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signInWithEmail,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     required TResult orElse(),
@@ -624,7 +624,7 @@ abstract class _PasswordOnChanged implements SignUpFormEvent {
 
   String get password;
 
-  /// Create a copy of SignInFormEvent
+  /// Create a copy of SignUpFormEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PasswordOnChangedImplCopyWith<_$PasswordOnChangedImpl> get copyWith =>
@@ -632,40 +632,40 @@ abstract class _PasswordOnChanged implements SignUpFormEvent {
 }
 
 /// @nodoc
-mixin _$SignInFormState {
+mixin _$SignUpFormState {
   RequestState get state => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
-  /// Create a copy of SignInFormState
+  /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SignInFormStateCopyWith<SignUpFormState> get copyWith =>
+  $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SignInFormStateCopyWith<$Res> {
-  factory $SignInFormStateCopyWith(
+abstract class $SignUpFormStateCopyWith<$Res> {
+  factory $SignUpFormStateCopyWith(
           SignUpFormState value, $Res Function(SignUpFormState) then) =
-      _$SignInFormStateCopyWithImpl<$Res, SignUpFormState>;
+      _$SignUpFormStateCopyWithImpl<$Res, SignUpFormState>;
   @useResult
   $Res call(
       {RequestState state, String message, String email, String password});
 }
 
 /// @nodoc
-class _$SignInFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
-    implements $SignInFormStateCopyWith<$Res> {
-  _$SignInFormStateCopyWithImpl(this._value, this._then);
+class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
+    implements $SignUpFormStateCopyWith<$Res> {
+  _$SignUpFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SignInFormState
+  /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -697,11 +697,11 @@ class _$SignInFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
 }
 
 /// @nodoc
-abstract class _$$SignInFormStateImplCopyWith<$Res>
-    implements $SignInFormStateCopyWith<$Res> {
-  factory _$$SignInFormStateImplCopyWith(_$SignInFormStateImpl value,
-          $Res Function(_$SignInFormStateImpl) then) =
-      __$$SignInFormStateImplCopyWithImpl<$Res>;
+abstract class _$$SignUpFormStateImplCopyWith<$Res>
+    implements $SignUpFormStateCopyWith<$Res> {
+  factory _$$SignUpFormStateImplCopyWith(_$SignUpFormStateImpl value,
+          $Res Function(_$SignUpFormStateImpl) then) =
+      __$$SignUpFormStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -709,14 +709,14 @@ abstract class _$$SignInFormStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SignInFormStateImplCopyWithImpl<$Res>
-    extends _$SignInFormStateCopyWithImpl<$Res, _$SignInFormStateImpl>
-    implements _$$SignInFormStateImplCopyWith<$Res> {
-  __$$SignInFormStateImplCopyWithImpl(
-      _$SignInFormStateImpl _value, $Res Function(_$SignInFormStateImpl) _then)
+class __$$SignUpFormStateImplCopyWithImpl<$Res>
+    extends _$SignUpFormStateCopyWithImpl<$Res, _$SignUpFormStateImpl>
+    implements _$$SignUpFormStateImplCopyWith<$Res> {
+  __$$SignUpFormStateImplCopyWithImpl(
+      _$SignUpFormStateImpl _value, $Res Function(_$SignUpFormStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SignInFormState
+  /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -726,7 +726,7 @@ class __$$SignInFormStateImplCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$SignInFormStateImpl(
+    return _then(_$SignUpFormStateImpl(
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -749,8 +749,8 @@ class __$$SignInFormStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignInFormStateImpl implements _SignInFormState {
-  const _$SignInFormStateImpl(
+class _$SignUpFormStateImpl implements _SignUpFormState {
+  const _$SignUpFormStateImpl(
       {required this.state,
       required this.message,
       required this.email,
@@ -767,14 +767,14 @@ class _$SignInFormStateImpl implements _SignInFormState {
 
   @override
   String toString() {
-    return 'SignInFormState(state: $state, message: $message, email: $email, password: $password)';
+    return 'SignUpFormState(state: $state, message: $message, email: $email, password: $password)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignInFormStateImpl &&
+            other is _$SignUpFormStateImpl &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.email, email) || other.email == email) &&
@@ -785,22 +785,22 @@ class _$SignInFormStateImpl implements _SignInFormState {
   @override
   int get hashCode => Object.hash(runtimeType, state, message, email, password);
 
-  /// Create a copy of SignInFormState
+  /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SignInFormStateImplCopyWith<_$SignInFormStateImpl> get copyWith =>
-      __$$SignInFormStateImplCopyWithImpl<_$SignInFormStateImpl>(
+  _$$SignUpFormStateImplCopyWith<_$SignUpFormStateImpl> get copyWith =>
+      __$$SignUpFormStateImplCopyWithImpl<_$SignUpFormStateImpl>(
           this, _$identity);
 }
 
-abstract class _SignInFormState implements SignUpFormState {
-  const factory _SignInFormState(
+abstract class _SignUpFormState implements SignUpFormState {
+  const factory _SignUpFormState(
       {required final RequestState state,
       required final String message,
       required final String email,
-      required final String password}) = _$SignInFormStateImpl;
+      required final String password}) = _$SignUpFormStateImpl;
 
   @override
   RequestState get state;
@@ -811,10 +811,10 @@ abstract class _SignInFormState implements SignUpFormState {
   @override
   String get password;
 
-  /// Create a copy of SignInFormState
+  /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SignInFormStateImplCopyWith<_$SignInFormStateImpl> get copyWith =>
+  _$$SignUpFormStateImplCopyWith<_$SignUpFormStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

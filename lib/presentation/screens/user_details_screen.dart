@@ -24,22 +24,16 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   }
 
   @override
-  void dispose() {
-    context.read<UserBloc>().add(const GetUsersEvent(1));
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          if (state is UserLoading) {
+          if (state.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is SingleUserState) {
-            return _buildUserDetails(state.user);
-          } else if (state is UserError) {
-            return Center(child: Text(state.message));
+          } else if (state.selectedUser != null) {
+            return _buildUserDetails(state.selectedUser!);
+          } else if (state.error != null) {
+            return Center(child: Text(state.error!));
           } else {
             return const Center(child: Text('User not found'));
           }

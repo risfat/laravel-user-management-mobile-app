@@ -21,7 +21,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     required this.createUserUseCase,
     required this.updateUserUseCase,
     required this.deleteUserUseCase,
-  }) : super(UserInitial()) {
+  }) : super(const UserState()) {
     on<GetUsersEvent>(_onGetUsers);
     on<LoadMoreUsersEvent>(_onLoadMoreUsers);
     on<GetUserEvent>(_onGetUser);
@@ -31,54 +31,65 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> _onGetUsers(GetUsersEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(state.copyWith(isLoading: true, error: null));
     final result = await listUsersUseCase.execute(event.page);
     result.fold(
-      (failure) => emit(UserError(failure.message)),
-      (users) => emit(UsersListState(users, users.length < 10, event.page)),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.message)),
+      (users) => emit(state.copyWith(
+        isLoading: false,
+        users: users,
+        hasReachedMax: users.length < 10,
+        currentPage: event.page,
+      )),
     );
   }
 
   Future<void> _onLoadMoreUsers(
       LoadMoreUsersEvent event, Emitter<UserState> emit) async {
-    final currentState = state;
-    if (currentState is UsersListState && !currentState.hasReachedMax) {
-      final nextPage = currentState.currentPage + 1;
+    if (!state.hasReachedMax) {
+      final nextPage = state.currentPage + 1;
       final result = await listUsersUseCase.execute(nextPage);
       result.fold(
-        (failure) => emit(UserError(failure.message)),
-        (newUsers) => emit(UsersListState(
-          [...currentState.users, ...newUsers],
-          newUsers.length < 10,
-          nextPage,
+        (failure) => emit(state.copyWith(error: failure.message)),
+        (newUsers) => emit(state.copyWith(
+          users: [...state.users, ...newUsers],
+          hasReachedMax: newUsers.length < 10,
+          currentPage: nextPage,
         )),
       );
     }
   }
 
   Future<void> _onGetUser(GetUserEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(state.copyWith(isLoading: true, error: null));
     final result = await getUserUseCase.execute(event.userId);
     result.fold(
-      (failure) => emit(UserError(failure.toString())),
-      (user) => emit(SingleUserState(user)),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.toString())),
+      (user) => emit(state.copyWith(isLoading: false, selectedUser: user)),
     );
   }
 
   Future<void> _onCreateUser(
       CreateUserEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(state.copyWith(isLoading: true, error: null, successMessage: null));
     final result = await createUserUseCase.execute(
         event.name, event.email, event.password);
     result.fold(
-      (failure) => emit(UserError(failure.toString())),
-      (user) => emit(const UserOperationState('User created successfully')),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.toString())),
+      (user) => emit(state.copyWith(
+        isLoading: false,
+        successMessage: 'User created successfully',
+        users: [user, ...state.users],
+      )),
     );
   }
 
   Future<void> _onUpdateUser(
       UpdateUserEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(state.copyWith(isLoading: true, error: null, successMessage: null));
     final result = await updateUserUseCase.execute(
       event.userId,
       name: event.name,
@@ -86,18 +97,39 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       password: event.password,
     );
     result.fold(
-      (failure) => emit(UserError(failure.toString())),
-      (user) => emit(const UserOperationState('User updated successfully')),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.toString())),
+      (updatedUser) {
+        final updatedUsers = state.users
+            .map((user) => user.id == updatedUser.id ? updatedUser : user)
+            .toList();
+        emit(state.copyWith(
+          isLoading: false,
+          successMessage: 'User updated successfully',
+          users: updatedUsers,
+          selectedUser: updatedUser,
+        ));
+      },
     );
   }
 
   Future<void> _onDeleteUser(
       DeleteUserEvent event, Emitter<UserState> emit) async {
-    emit(UserLoading());
+    emit(state.copyWith(isLoading: true, error: null, successMessage: null));
     final result = await deleteUserUseCase.execute(event.userId);
     result.fold(
-      (failure) => emit(UserError(failure.toString())),
-      (_) => emit(const UserOperationState('User deleted successfully')),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.toString())),
+      (_) {
+        final updatedUsers =
+            state.users.where((user) => user.id != event.userId).toList();
+        emit(state.copyWith(
+          isLoading: false,
+          successMessage: 'User deleted successfully',
+          users: updatedUsers,
+          selectedUser: null,
+        ));
+      },
     );
   }
 }

@@ -6,11 +6,20 @@ import '../../bloc/user/user_bloc.dart';
 import '../../bloc/user/user_event.dart';
 import '../../bloc/user/user_state.dart';
 import '../../screens/user_details_screen.dart';
-import '../../widgets/custom_error_widget.dart';
 
-class UsersPage extends StatelessWidget {
+class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
 
+  @override
+  State<UsersPage> createState() => _UsersPageState();
+}
+
+class _UsersPageState extends State<UsersPage> {
+  @override
+  void initState() {
+    context.read<UserBloc>().add(const GetUsersEvent(1));
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,18 +28,14 @@ class UsersPage extends StatelessWidget {
       ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          if (state is UserInitial) {
-            print("Event received: initial state");
-            context.read<UserBloc>().add(const GetUsersEvent(1));
+          if (state.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is UserLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is UsersListState) {
+          } else if (state.error != null) {
+            return Center(child: Text(state.error!));
+          } else if (state.users.isNotEmpty) {
             return _buildUserList(context, state.users, state.hasReachedMax);
-          } else if (state is UserError) {
-            return CustomErrorWidget(errorMessage: state.message);
           } else {
-            return const Center(child: Text('Unknown state'));
+            return const Center(child: Text('No Users Available'));
           }
         },
       ),

@@ -37,14 +37,14 @@ class _UserFormScreenState extends State<UserFormScreen> {
       ),
       body: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
-          if (state is UserOperationState) {
+          if (state.successMessage != null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
+              SnackBar(content: Text(state.successMessage!)),
             );
             Navigator.of(context).pop();
-          } else if (state is UserError) {
+          } else if (state.error != null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
+              SnackBar(content: Text(state.error!)),
             );
           }
         },

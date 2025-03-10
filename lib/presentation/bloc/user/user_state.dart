@@ -1,55 +1,19 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:laravel_user_management_mobile_app/domain/entities/user.dart';
 
 import '../../../data/models/user_model.dart';
 
-abstract class UserState extends Equatable {
-  const UserState();
+part 'user_state.freezed.dart';
 
-  @override
-  List<Object> get props => [];
-}
-
-class UserInitial extends UserState {}
-
-class UserLoading extends UserState {}
-
-class UserError extends UserState {
-  final String message;
-
-  const UserError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
-
-// States for user listing
-class UsersListState extends UserState {
-  final List<UserModel> users;
-  final bool hasReachedMax;
-  final int currentPage;
-
-  const UsersListState(this.users, this.hasReachedMax, this.currentPage);
-
-  @override
-  List<Object> get props => [users, hasReachedMax, currentPage];
-}
-
-// State for single user
-class SingleUserState extends UserState {
-  final UserModel user;
-
-  const SingleUserState(this.user);
-
-  @override
-  List<Object> get props => [user];
-}
-
-// State for CRUD operations
-class UserOperationState extends UserState {
-  final String message;
-
-  const UserOperationState(this.message);
-
-  @override
-  List<Object> get props => [message];
+@freezed
+class UserState with _$UserState {
+  const factory UserState({
+    @Default([]) List<UserModel> users,
+    UserModel? selectedUser,
+    @Default(false) bool isLoading,
+    @Default(false) bool hasReachedMax,
+    @Default(1) int currentPage,
+    String? error,
+    String? successMessage,
+  }) = _UserState;
 }

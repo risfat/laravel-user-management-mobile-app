@@ -6,6 +6,8 @@ import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_b
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_event.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_state.dart';
 
+import 'user_details_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -31,9 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          if (state is UserLoading) {
+          if (state.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is UsersListState) {
+          } else if (state.users.isNotEmpty) {
             return ListView.builder(
               itemCount: state.users.length,
               itemBuilder: (context, index) {
@@ -42,17 +44,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: Text(user.name),
                   subtitle: Text(user.email),
                   onTap: () {
-                    Navigator.pushNamed(
+                    // Navigate to user details screen
+                    Navigator.push(
                       context,
-                      '/user_details',
-                      arguments: user.id,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            UserDetailsScreen(userId: user.id),
+                      ),
                     );
                   },
                 );
               },
             );
-          } else if (state is UserError) {
-            return Center(child: Text(state.message));
+          } else if (state.error != null) {
+            return Center(child: Text(state.error!));
           } else {
             return const Center(child: Text('No users found'));
           }

@@ -9,7 +9,25 @@ class CreateUser {
   CreateUser(this.repository);
 
   Future<Either<Failure, UserModel>> execute(
-      String name, String email, String password) async {
-    return await repository.createUser(name, email, password);
+      String name, String email, String password,
+      {String? phone,
+      String? address,
+      String? city,
+      String? state,
+      String? country,
+      String? zipCode,
+      DateTime? dateOfBirth,
+      String? gender,
+      String? bio}) async {
+    return await repository.createUser(name, email, password,
+        phone: phone,
+        address: address,
+        city: city,
+        state: state,
+        country: country,
+        zipCode: zipCode,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        bio: bio);
   }
 }

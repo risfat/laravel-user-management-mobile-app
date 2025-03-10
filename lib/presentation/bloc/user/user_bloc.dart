@@ -75,7 +75,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       CreateUserEvent event, Emitter<UserState> emit) async {
     emit(state.copyWith(isLoading: true, error: null, successMessage: null));
     final result = await createUserUseCase.execute(
-        event.name, event.email, event.password);
+        event.name, event.email, event.password,
+        phone: event.phone,
+        address: event.address,
+        city: event.city,
+        state: event.state,
+        country: event.country,
+        zipCode: event.zipCode,
+        dateOfBirth: event.dateOfBirth,
+        gender: event.gender,
+        bio: event.bio);
     result.fold(
       (failure) =>
           emit(state.copyWith(isLoading: false, error: failure.toString())),
@@ -95,7 +104,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       name: event.name,
       email: event.email,
       password: event.password,
-      role: event.role,
+      role: event.role ?? 'ReadOnly',
       phone: event.phone,
       address: event.address,
       city: event.city,

@@ -7,9 +7,32 @@ import '../../../core/error/exceptions.dart';
 abstract class UserRemoteDataSource {
   Future<List<UserModel>> listUsers(int page);
   Future<UserModel> getUser(int id);
-  Future<UserModel> createUser(String name, String email, String password);
-  Future<UserModel> updateUser(int id,
-      {String? name, String? email, String? password});
+  Future<UserModel> createUser(String name, String email, String password,
+      {String? phone,
+      String? address,
+      String? city,
+      String? state,
+      String? country,
+      String? zipCode,
+      DateTime? dateOfBirth,
+      String? gender,
+      String? bio});
+  Future<UserModel> updateUser(
+    int id, {
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? phone,
+    String? address,
+    String? city,
+    String? state,
+    String? country,
+    String? zipCode,
+    DateTime? dateOfBirth,
+    String? gender,
+    String? bio,
+  });
   Future<void> deleteUser(int id);
 }
 
@@ -42,8 +65,16 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<UserModel> createUser(
-      String name, String email, String password) async {
+  Future<UserModel> createUser(String name, String email, String password,
+      {String? phone,
+      String? address,
+      String? city,
+      String? state,
+      String? country,
+      String? zipCode,
+      DateTime? dateOfBirth,
+      String? gender,
+      String? bio}) async {
     try {
       final response = await dio.post(
         API.USERS,
@@ -51,10 +82,29 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
           'name': name,
           'email': email,
           'password': password,
+          "password_confirmation": password,
+          'role': 'ReadOnly',
+          if (phone != null && phone.isNotEmpty) 'phone': phone,
+          if (address != null && address.isNotEmpty) 'address': address,
+          if (city != null && city.isNotEmpty) 'city': city,
+          if (state != null && state.isNotEmpty) 'state': state,
+          if (country != null && country.isNotEmpty) 'country': country,
+          if (zipCode != null && zipCode.isNotEmpty) 'zip_code': zipCode,
+          if (dateOfBirth != null)
+            'date_of_birth': dateOfBirth.toIso8601String(),
+          if (gender != null && gender.isNotEmpty) 'gender': gender,
+          if (bio != null && bio.isNotEmpty) 'bio': bio,
         },
       );
-      return UserModel.fromJson(response.data['user']);
+      return UserModel.fromJson(response.data);
     } catch (e) {
+      if (e is DioException) {
+        print("Error creating user: ${e.message}");
+        print("Status code: ${e.response?.statusCode}");
+        print("Response data: ${e.response?.data}");
+      } else {
+        print("Error creating user: $e");
+      }
       throw Exception('Failed to create user');
     }
   }
@@ -72,7 +122,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     String? state,
     String? country,
     String? zipCode,
-    String? dateOfBirth,
+    DateTime? dateOfBirth,
     String? gender,
     String? bio,
   }) async {
@@ -90,7 +140,8 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
           if (state != null) 'state': state,
           if (country != null) 'country': country,
           if (zipCode != null) 'zip_code': zipCode,
-          if (dateOfBirth != null) 'date_of_birth': dateOfBirth,
+          if (dateOfBirth != null)
+            'date_of_birth': dateOfBirth.toIso8601String(),
           if (gender != null) 'gender': gender,
           if (bio != null) 'bio': bio,
         },

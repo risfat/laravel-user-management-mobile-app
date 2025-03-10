@@ -69,7 +69,7 @@ class UserModel extends User {
       dateOfBirth: json['date_of_birth'],
       gender: json['gender'],
       bio: json['bio'],
-      status: json['status'],
+      status: json['status'] ?? false,
       profilePhotoPath: json['profile_photo_path'],
       twoFactorConfirmedAt: json['two_factor_confirmed_at'],
       profilePhotoUrl: json['profile_photo_url'],

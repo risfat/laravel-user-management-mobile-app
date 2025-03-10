@@ -29,15 +29,46 @@ class CreateUserEvent extends UserEvent {
   final String name;
   final String email;
   final String password;
+  final String phone;
+  final String address;
+  final String city;
+  final String state;
+  final String country;
+  final String zipCode;
+  final DateTime dateOfBirth;
+  final String gender;
+  final String? bio;
 
   const CreateUserEvent({
     required this.name,
     required this.email,
     required this.password,
+    required this.phone,
+    required this.address,
+    required this.city,
+    required this.state,
+    required this.country,
+    required this.zipCode,
+    required this.dateOfBirth,
+    required this.gender,
+    this.bio,
   });
 
   @override
-  List<Object> get props => [name, email, password];
+  List<Object?> get props => [
+        name,
+        email,
+        password,
+        phone,
+        address,
+        city,
+        state,
+        country,
+        zipCode,
+        dateOfBirth,
+        gender,
+        bio,
+      ];
 }
 
 class UpdateUserEvent extends UserEvent {

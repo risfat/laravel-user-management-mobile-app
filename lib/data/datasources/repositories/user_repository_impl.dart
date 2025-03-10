@@ -21,11 +21,32 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Either<Failure, UserModel>> createUser(
-      String name, String email, String password) async {
+      String name, String email, String password,
+      {String? phone,
+      String? address,
+      String? city,
+      String? state,
+      String? country,
+      String? zipCode,
+      DateTime? dateOfBirth,
+      String? gender,
+      String? bio}) async {
     if (await networkInfo.isConnected) {
       try {
-        final createdUser =
-            await remoteDataSource.createUser(name, email, password);
+        final createdUser = await remoteDataSource.createUser(
+          name,
+          email,
+          password,
+          phone: phone,
+          address: address,
+          city: city,
+          state: state,
+          country: country,
+          zipCode: zipCode,
+          dateOfBirth: dateOfBirth,
+          gender: gender,
+          bio: bio,
+        );
         // await localDataSource.cacheUser(createdUser);
         return Right(createdUser);
       } on ServerException catch (e) {
@@ -77,8 +98,22 @@ class UserRepositoryImpl implements UserRepository {
   }) async {
     if (await networkInfo.isConnected) {
       try {
-        final updatedUser = await remoteDataSource.updateUser(id,
-            email: email, name: name, password: password);
+        final updatedUser = await remoteDataSource.updateUser(
+          id,
+          email: email,
+          name: name,
+          password: password,
+          role: role,
+          phone: phone,
+          address: address,
+          city: city,
+          state: state,
+          country: country,
+          zipCode: zipCode,
+          dateOfBirth: dateOfBirth,
+          gender: gender,
+          bio: bio,
+        );
         // await localDataSource.cacheUser(updatedUser);
         return Right(updatedUser);
       } on ServerException catch (e) {

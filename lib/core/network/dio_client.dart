@@ -13,7 +13,9 @@ class DioClient {
   }
 
   static Dio _createDioInstance() {
-    final dio = Dio();
+    final dio = Dio()
+      ..options.followRedirects = true
+      ..options.maxRedirects = 5;
     final tokenService = TokenService(dio);
 
     // Add AuthInterceptor

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laravel_user_management_mobile_app/presentation/screens/add_user_page.dart';
 
 import '../../../data/models/user_model.dart';
 import '../../bloc/user/user_bloc.dart';
@@ -25,6 +26,15 @@ class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+          onPressed: (){
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const AddUserPage(),
+          ),
+        );
+      }),
       appBar: AppBar(
         title: const Text('Users'),
       ),

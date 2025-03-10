@@ -61,11 +61,14 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   Widget _buildSliverAppBar(UserModel user) {
     return SliverAppBar(
       expandedHeight: 200,
+      foregroundColor: Colors.white,
       floating: false,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
           user.name,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white),
         ),
         background: Container(
@@ -229,8 +232,14 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
               onPressed: () {
                 _showDeleteConfirmation(context, user.id);
               },
-              icon: const Icon(Icons.delete),
-              label: const Text('Delete User'),
+              icon: const Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+              label: const Text(
+                'Delete User',
+                style: TextStyle(color: Colors.white),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 padding: const EdgeInsets.symmetric(vertical: 12),

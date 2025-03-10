@@ -63,6 +63,7 @@ _$StatsImpl _$$StatsImplFromJson(Map<String, dynamic> json) => _$StatsImpl(
       thisMonth: (json['thisMonth'] as num).toInt(),
       lastMonth: (json['lastMonth'] as num).toInt(),
       growth: (json['growth'] as num).toDouble(),
+      userName: json['userName'] as String,
     );
 
 Map<String, dynamic> _$$StatsImplToJson(_$StatsImpl instance) =>
@@ -73,4 +74,5 @@ Map<String, dynamic> _$$StatsImplToJson(_$StatsImpl instance) =>
       'thisMonth': instance.thisMonth,
       'lastMonth': instance.lastMonth,
       'growth': instance.growth,
+      'userName': instance.userName,
     };

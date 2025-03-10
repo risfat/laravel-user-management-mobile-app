@@ -22,7 +22,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<DashboardBloc>().add(const DashboardEvent.fetchDashboardData());
+    context
+        .read<DashboardBloc>()
+        .add(const DashboardEvent.fetchDashboardData());
   }
 
   @override
@@ -48,8 +50,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               context.read<AuthenticatorWatcherBloc>().add(
-                const AuthenticatorWatcherEvent.signOut(),
-              );
+                    const AuthenticatorWatcherEvent.signOut(),
+                  );
               context.replaceNamed(AppRoutes.loginRouteName);
             },
           ),
@@ -66,9 +68,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Welcome back, User!',
-                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    Text(
+                      'Welcome back, ${data.stats.userName}!',
+                      style:
+                          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ).animate().fadeIn(duration: 600.ms).slideX(),
                     const SizedBox(height: 24),
                     _buildStatCards(data.stats),
@@ -111,7 +114,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ],
     ).animate().fadeIn(duration: 800.ms).slideY(begin: 0.2);
   }
-  Widget _buildStatCard(String title, String value, IconData icon, Color color, {VoidCallback? onTap}) {
+
+  Widget _buildStatCard(String title, String value, IconData icon, Color color,
+      {VoidCallback? onTap}) {
     return Expanded(
       child: InkWell(
         onTap: onTap,
@@ -152,6 +157,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
     );
   }
+
   Widget _buildChart(MonthlyUsers monthlyUsers, WeeklyActivity weeklyActivity) {
     return SizedBox(
       height: 300,
@@ -209,18 +215,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           LineChartBarData(
             spots: List.generate(
               monthlyUsers.months.length,
-                  (index) => FlSpot(index.toDouble(), monthlyUsers.counts[index].toDouble()),
+              (index) => FlSpot(
+                  index.toDouble(), monthlyUsers.counts[index].toDouble()),
             ),
             isCurved: true,
             color: Colors.blue,
             barWidth: 4,
             dotData: const FlDotData(show: false),
-            belowBarData: BarAreaData(show: true, color: Colors.blue.withOpacity(0.1)),
+            belowBarData:
+                BarAreaData(show: true, color: Colors.blue.withOpacity(0.1)),
           ),
         ],
       ),
     );
   }
+
   Widget _buildBarChart(WeeklyActivity weeklyActivity) {
     return BarChart(
       BarChartData(
@@ -245,7 +254,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         borderData: FlBorderData(show: false),
         barGroups: List.generate(
           weeklyActivity.days.length,
-              (index) => BarChartGroupData(
+          (index) => BarChartGroupData(
             x: index,
             barRods: [
               BarChartRodData(

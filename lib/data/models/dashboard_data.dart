@@ -47,6 +47,7 @@ class Stats with _$Stats {
     required int thisMonth,
     required int lastMonth,
     required double growth,
+    required String userName,
   }) = _Stats;
 
   factory Stats.fromJson(Map<String, dynamic> json) => _$StatsFromJson(json);

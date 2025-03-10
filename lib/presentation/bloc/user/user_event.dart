@@ -45,16 +45,51 @@ class UpdateUserEvent extends UserEvent {
   final String? name;
   final String? email;
   final String? password;
+  final String? role;
+  final String? phone;
+  final String? address;
+  final String? city;
+  final String? state;
+  final String? country;
+  final String? zipCode;
+  final DateTime? dateOfBirth;
+  final String? gender;
+  final String? bio;
 
   const UpdateUserEvent({
     required this.userId,
     this.name,
     this.email,
     this.password,
+    this.role,
+    this.phone,
+    this.address,
+    this.city,
+    this.state,
+    this.country,
+    this.zipCode,
+    this.dateOfBirth,
+    this.gender,
+    this.bio,
   });
 
   @override
-  List<Object?> get props => [userId, name, email, password];
+  List<Object?> get props => [
+        userId,
+        name,
+        email,
+        password,
+        role,
+        phone,
+        address,
+        city,
+        state,
+        country,
+        zipCode,
+        dateOfBirth,
+        gender,
+        bio,
+      ];
 }
 
 class DeleteUserEvent extends UserEvent {

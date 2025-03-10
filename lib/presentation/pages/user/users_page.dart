@@ -5,6 +5,7 @@ import '../../../data/models/user_model.dart';
 import '../../bloc/user/user_bloc.dart';
 import '../../bloc/user/user_event.dart';
 import '../../bloc/user/user_state.dart';
+import '../../screens/update_user_page.dart';
 import '../../screens/user_details_screen.dart';
 
 class UsersPage extends StatefulWidget {
@@ -75,7 +76,16 @@ class _UsersPageState extends State<UsersPage> {
         ),
         title: Text((user.firstName != null && user.lastName != null) ? ' ${user.firstName} ${user.lastName}' : user.name),
         subtitle: Text(user.email),
-        trailing: const Icon(Icons.arrow_forward_ios),
+        trailing: IconButton(
+          icon: const Icon(Icons.edit),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => UpdateUserPage(user: user),
+              ),
+            );
+          },
+        ),
         onTap: () {
           // Navigate to user details page
           Navigator.push(

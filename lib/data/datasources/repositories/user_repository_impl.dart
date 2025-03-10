@@ -59,8 +59,22 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Either<Failure, UserModel>> updateUser(int id,
-      {String? email, String? name, String? password}) async {
+  Future<Either<Failure, UserModel>> updateUser(
+    int id, {
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? phone,
+    String? address,
+    String? city,
+    String? state,
+    String? country,
+    String? zipCode,
+    DateTime? dateOfBirth,
+    String? gender,
+    String? bio,
+  }) async {
     if (await networkInfo.isConnected) {
       try {
         final updatedUser = await remoteDataSource.updateUser(id,

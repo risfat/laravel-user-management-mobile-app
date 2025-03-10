@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:laravel_user_management_mobile_app/core/network/api.dart';
 import 'package:laravel_user_management_mobile_app/data/models/user_model.dart';
 
+import '../../../core/error/exceptions.dart';
+
 abstract class UserRemoteDataSource {
   Future<List<UserModel>> listUsers(int page);
   Future<UserModel> getUser(int id);
@@ -58,21 +60,51 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<UserModel> updateUser(int id,
-      {String? name, String? email, String? password}) async {
+  Future<UserModel> updateUser(
+    int id, {
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? phone,
+    String? address,
+    String? city,
+    String? state,
+    String? country,
+    String? zipCode,
+    String? dateOfBirth,
+    String? gender,
+    String? bio,
+  }) async {
     try {
-      final data = <String, dynamic>{};
-      if (name != null) data['name'] = name;
-      if (email != null) data['email'] = email;
-      if (password != null) data['password'] = password;
-
       final response = await dio.put(
         '${API.USERS}/$id',
-        data: data,
+        data: {
+          if (name != null) 'name': name,
+          if (email != null) 'email': email,
+          if (password != null) 'password': password,
+          if (role != null) 'role': role,
+          if (phone != null) 'phone': phone,
+          if (address != null) 'address': address,
+          if (city != null) 'city': city,
+          if (state != null) 'state': state,
+          if (country != null) 'country': country,
+          if (zipCode != null) 'zip_code': zipCode,
+          if (dateOfBirth != null) 'date_of_birth': dateOfBirth,
+          if (gender != null) 'gender': gender,
+          if (bio != null) 'bio': bio,
+        },
       );
-      return UserModel.fromJson(response.data['user']);
+
+      if (response.statusCode == 200) {
+        return UserModel.fromJson(response.data);
+      } else {
+        throw ServerException(
+          response.data['message'] ?? 'Failed to update user',
+        );
+      }
     } catch (e) {
-      throw Exception('Failed to update user');
+      throw ServerException('Failed to update user');
     }
   }
 

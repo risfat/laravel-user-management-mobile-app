@@ -95,6 +95,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       name: event.name,
       email: event.email,
       password: event.password,
+      role: event.role,
+      phone: event.phone,
+      address: event.address,
+      city: event.city,
+      state: event.state,
+      country: event.country,
+      zipCode: event.zipCode,
+      dateOfBirth: event.dateOfBirth,
+      gender: event.gender,
+      bio: event.bio,
     );
     result.fold(
       (failure) =>

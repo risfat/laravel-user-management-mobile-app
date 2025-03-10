@@ -8,7 +8,21 @@ abstract class UserRepository {
   Future<Either<Failure, UserModel>> getUser(int id);
   Future<Either<Failure, UserModel>> createUser(
       String name, String email, String password);
-  Future<Either<Failure, UserModel>> updateUser(int id,
-      {String? name, String? email, String? password});
+  Future<Either<Failure, UserModel>> updateUser(
+    int userId, {
+    String? name,
+    String? email,
+    String? password,
+    String? role,
+    String? phone,
+    String? address,
+    String? city,
+    String? state,
+    String? country,
+    String? zipCode,
+    DateTime? dateOfBirth,
+    String? gender,
+    String? bio,
+  });
   Future<Either<Failure, void>> deleteUser(int id);
 }

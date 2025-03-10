@@ -67,7 +67,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
-          user.name,
+          user.fullName ?? 'N/A',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white),
@@ -114,7 +114,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           children: [
             _buildSectionTitle('Personal Information'),
             _buildInfoRow(
-                Icons.person, 'Full Name', user.fullName != null ? user.name : 'N/A'),
+                Icons.person, 'Full Name', user.fullName ?? "N/A"),
             _buildInfoRow(Icons.email, 'Email', user.email),
             _buildInfoRow(Icons.phone, 'Phone', user.phone ?? 'Not provided'),
             _buildInfoRow(

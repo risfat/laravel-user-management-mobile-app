@@ -73,7 +73,7 @@ class UserModel extends User {
       profilePhotoPath: json['profile_photo_path'],
       twoFactorConfirmedAt: json['two_factor_confirmed_at'],
       profilePhotoUrl: json['profile_photo_url'],
-      fullName: json['full_name'] ?? json['name'] ?? 'Unknown',
+      fullName: json['full_name'] ?? 'Unknown',
     );
   }
 

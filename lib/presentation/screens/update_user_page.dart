@@ -35,7 +35,8 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   @override
   void initState() {
     super.initState();
-    _nameController = TextEditingController(text: widget.user.name);
+    _nameController =
+        TextEditingController(text: widget.user.fullName ?? widget.user.name);
     _emailController = TextEditingController(text: widget.user.email);
     _passwordController = TextEditingController();
     _phoneController = TextEditingController(text: widget.user.phone);
@@ -143,6 +144,21 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                   controller: _zipCodeController,
                   decoration: const InputDecoration(labelText: 'Zip Code'),
                 ),
+                DropdownButtonFormField<String>(
+                  value: _gender,
+                  decoration: const InputDecoration(labelText: 'Gender'),
+                  items: ['male', 'female', 'other']
+                      .map((gender) => DropdownMenuItem(
+                            value: gender,
+                            child: Text(gender),
+                          ))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _gender = value;
+                    });
+                  },
+                ),
                 ListTile(
                   title: const Text('Date of Birth'),
                   subtitle: Text(_dateOfBirth != null
@@ -161,21 +177,6 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                         _dateOfBirth = picked;
                       });
                     }
-                  },
-                ),
-                DropdownButtonFormField<String>(
-                  value: _gender,
-                  decoration: const InputDecoration(labelText: 'Gender'),
-                  items: ['male', 'female', 'other']
-                      .map((gender) => DropdownMenuItem(
-                            value: gender,
-                            child: Text(gender),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      _gender = value;
-                    });
                   },
                 ),
                 TextFormField(

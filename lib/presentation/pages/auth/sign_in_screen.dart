@@ -8,7 +8,7 @@ import '../../../core/config/constants.dart';
 import '../../../core/config/routes.dart';
 import '../../../core/utilities/enums.dart';
 import '../../../core/utilities/toast.dart';
-import '../../bloc/sign_in_form/sign_in_form_bloc.dart';
+import '../../bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
 

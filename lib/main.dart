@@ -7,8 +7,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:laravel_user_management_mobile_app/di/injection_container.dart'
     as di;
 import 'package:laravel_user_management_mobile_app/presentation/bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
-import 'package:laravel_user_management_mobile_app/presentation/bloc/sign_in_form/sign_in_form_bloc.dart';
-import 'package:laravel_user_management_mobile_app/presentation/bloc/sign_up_form/sign_up_form_bloc.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_bloc.dart';
 import 'package:laravel_user_management_mobile_app/presentation/cubit/theme/theme_cubit.dart';
 
@@ -16,6 +14,8 @@ import 'core/utilities/app_bloc_observer.dart';
 import 'core/utilities/go_router.dart';
 import 'core/utilities/logger.dart';
 import 'core/utilities/themes.dart';
+import 'presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 
 void main() {
   logger.runLogging(

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laravel_user_management_mobile_app/presentation/screens/add_user_screen.dart';
+
 
 import '../../../data/models/user_model.dart';
 import '../../bloc/user/user_bloc.dart';
 import '../../bloc/user/user_event.dart';
 import '../../bloc/user/user_state.dart';
-import '../../screens/update_user_screen.dart';
-import '../../screens/user_details_screen.dart';
+import '../add_user_screen.dart';
+import '../update_user_screen.dart';
+import '../user_details_screen.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({super.key});

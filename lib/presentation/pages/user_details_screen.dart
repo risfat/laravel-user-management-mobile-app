@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_bloc.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_event.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_state.dart';
-import 'package:laravel_user_management_mobile_app/presentation/screens/update_user_screen.dart';
+import 'package:laravel_user_management_mobile_app/presentation/pages/update_user_screen.dart';
 
 import '../../data/models/user_model.dart';
 
@@ -113,8 +113,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSectionTitle('Personal Information'),
-            _buildInfoRow(
-                Icons.person, 'Full Name', user.fullName ?? "N/A"),
+            _buildInfoRow(Icons.person, 'Full Name', user.fullName ?? "N/A"),
             _buildInfoRow(Icons.email, 'Email', user.email),
             _buildInfoRow(Icons.phone, 'Phone', user.phone ?? 'Not provided'),
             _buildInfoRow(

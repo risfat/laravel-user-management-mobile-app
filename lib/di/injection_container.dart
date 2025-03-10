@@ -22,9 +22,9 @@ import '../core/network/network_info.dart';
 import '../data/datasources/local/user_local_data_source.dart';
 import '../data/datasources/repositories/authentication_repository_impl.dart';
 import '../data/datasources/repositories/user_repository_impl.dart';
+import '../presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import '../presentation/bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
-import '../presentation/bloc/sign_in_form/sign_in_form_bloc.dart';
-import '../presentation/bloc/sign_up_form/sign_up_form_bloc.dart';
 import '../presentation/cubit/theme/theme_cubit.dart';
 
 final getIt = GetIt.instance;

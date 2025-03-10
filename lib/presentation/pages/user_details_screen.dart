@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_bloc.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_event.dart';
 import 'package:laravel_user_management_mobile_app/presentation/bloc/user/user_state.dart';
-import 'package:laravel_user_management_mobile_app/presentation/screens/update_user_page.dart';
+import 'package:laravel_user_management_mobile_app/presentation/screens/update_user_screen.dart';
 
 import '../../data/models/user_model.dart';
 

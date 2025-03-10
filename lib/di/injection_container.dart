@@ -6,6 +6,7 @@ import 'package:laravel_user_management_mobile_app/data/datasources/remote/user_
 import 'package:laravel_user_management_mobile_app/domain/repositories/authentication_repository.dart';
 import 'package:laravel_user_management_mobile_app/domain/repositories/user_repository.dart';
 import 'package:laravel_user_management_mobile_app/domain/usecases/create_user.dart';
+import 'package:laravel_user_management_mobile_app/domain/usecases/dashboard.dart';
 import 'package:laravel_user_management_mobile_app/domain/usecases/delete_user.dart';
 import 'package:laravel_user_management_mobile_app/domain/usecases/get_authenticated_user.dart';
 import 'package:laravel_user_management_mobile_app/domain/usecases/get_user.dart';
@@ -20,11 +21,15 @@ import '../core/config/boxs.dart';
 import '../core/network/dio_client.dart';
 import '../core/network/network_info.dart';
 import '../data/datasources/local/user_local_data_source.dart';
+import '../data/datasources/remote/dashboard_remote_data_source.dart';
 import '../data/datasources/repositories/authentication_repository_impl.dart';
+import '../data/datasources/repositories/dashboard_repository_impl.dart';
 import '../data/datasources/repositories/user_repository_impl.dart';
+import '../domain/repositories/dashboard_repository.dart';
 import '../presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
 import '../presentation/bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
+import '../presentation/bloc/dashboard/dashboard_bloc.dart';
 import '../presentation/cubit/theme/theme_cubit.dart';
 
 final getIt = GetIt.instance;
@@ -41,6 +46,7 @@ void setupSynchronousRegistrations() {
   getIt.registerLazySingleton(() => ThemeCubit());
   getIt.registerLazySingleton(() => SignInFormBloc(getIt()));
   getIt.registerLazySingleton(() => SignUpFormBloc(getIt()));
+  getIt.registerLazySingleton(() => DashboardBloc(getIt()));
 
   // getIt.registerFactory(
   //   () => AuthBloc(
@@ -78,6 +84,7 @@ void setupSynchronousRegistrations() {
   getIt.registerLazySingleton(() => CreateUser(getIt()));
   getIt.registerLazySingleton(() => UpdateUser(getIt()));
   getIt.registerLazySingleton(() => DeleteUser(getIt()));
+  getIt.registerLazySingleton(() => Dashboard(getIt()));
 
   // Repositories
   getIt.registerLazySingleton<AuthenticationRepository>(
@@ -89,6 +96,10 @@ void setupSynchronousRegistrations() {
         localDataSource: getIt(),
         networkInfo: getIt()),
   );
+  getIt.registerLazySingleton<DashboardRepository>(
+    () => DashboardRepositoryImpl(
+        remoteDataSource: getIt(), networkInfo: getIt()),
+  );
 
   // Data sources
   getIt.registerLazySingleton<UserLocalDataSource>(
@@ -99,6 +110,9 @@ void setupSynchronousRegistrations() {
   );
   getIt.registerLazySingleton<AuthenticationRemoteDataSource>(
     () => AuthenticationRemoteDataSourceImpl(dio: getIt()),
+  );
+  getIt.registerLazySingleton<DashboardRemoteDataSource>(
+    () => DashboardRemoteDataSourceImpl(dio: getIt()),
   );
 }
 

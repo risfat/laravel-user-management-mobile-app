@@ -6,6 +6,9 @@ import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../core/config/routes.dart';
+import '../../../data/models/dashboard_data.dart';
+import '../../bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
+import '../../bloc/dashboard/dashboard_bloc.dart';
 import '../../cubit/theme/theme_cubit.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -17,92 +20,131 @@ class DashBoardScreen extends StatefulWidget {
 
 class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Dashboard'),
-          actions: [
-            BlocBuilder<ThemeCubit, ThemeState>(
-              builder: (context, state) {
-                return IconButton(
-                  icon: Icon(
-                    state is ThemeLight ? Icons.dark_mode : Icons.light_mode,
-                  ),
-                  onPressed: () {
-                    context.read<ThemeCubit>().changeTheme();
-                  },
-                );
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Welcome back, User!',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ).animate().fadeIn(duration: 600.ms).slideX(),
-                const SizedBox(height: 24),
-                _buildStatCards(),
-                const SizedBox(height: 24),
-                _buildChart(),
-                const SizedBox(height: 24),
-                _buildCalendar(),
-                const SizedBox(height: 24),
-                _buildDailyActivities(),
-              ],
-            ),
-          ),
-        ));
+  void initState() {
+    super.initState();
+    context.read<DashboardBloc>().add(const DashboardEvent.fetchDashboardData());
   }
 
-  Widget _buildStatCards() {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('Dashboard'),
+        actions: [
+          BlocBuilder<ThemeCubit, ThemeState>(
+            builder: (context, state) {
+              return IconButton(
+                icon: Icon(
+                  state is ThemeLight ? Icons.dark_mode : Icons.light_mode,
+                ),
+                onPressed: () {
+                  context.read<ThemeCubit>().changeTheme();
+                },
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthenticatorWatcherBloc>().add(
+                const AuthenticatorWatcherEvent.signOut(),
+              );
+              context.replaceNamed(AppRoutes.loginRouteName);
+            },
+          ),
+        ],
+      ),
+      body: BlocBuilder<DashboardBloc, DashboardState>(
+        builder: (context, state) {
+          return state.when(
+            initial: () => const Center(child: CircularProgressIndicator()),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            loaded: (data) => SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Welcome back, User!',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ).animate().fadeIn(duration: 600.ms).slideX(),
+                    const SizedBox(height: 24),
+                    _buildStatCards(data.stats),
+                    const SizedBox(height: 24),
+                    _buildChart(data.monthlyUsers, data.weeklyActivity),
+                    const SizedBox(height: 24),
+                    _buildCalendar(),
+                    const SizedBox(height: 24),
+                    _buildDailyActivities(),
+                  ],
+                ),
+              ),
+            ),
+            error: (message) => Center(child: Text('Error: $message')),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildStatCards(Stats stats) {
     return Row(
       children: [
         _buildStatCard(
           'Total Users',
-          '1,204',
+          stats.total.toString(),
           Icons.people,
           Colors.blue,
           onTap: () {
-            // Callback
             context.pushNamed(AppRoutes.usersRouteName);
           },
         ),
         const SizedBox(width: 16),
-        _buildStatCard('Revenue', '\$8,520', Icons.attach_money, Colors.green),
+        _buildStatCard(
+          'Verified Users',
+          stats.verified.toString(),
+          Icons.verified_user,
+          Colors.green,
+        ),
       ],
     ).animate().fadeIn(duration: 800.ms).slideY(begin: 0.2);
   }
-
-  Widget _buildStatCard(String title, String value, IconData icon, Color color,
-      {VoidCallback? onTap}) {
+  Widget _buildStatCard(String title, String value, IconData icon, Color color, {VoidCallback? onTap}) {
     return Expanded(
-      child: GestureDetector(
+      child: InkWell(
         onTap: onTap,
         child: Card(
           elevation: 4,
+          color: color.withOpacity(0.1),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(icon, color: color, size: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Icon(icon, color: color),
+                  ],
+                ),
                 const SizedBox(height: 8),
-                Text(title,
-                    style: TextStyle(fontSize: 16, color: Colors.grey[600])),
-                const SizedBox(height: 4),
-                Text(value,
-                    style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.bold)),
+                Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
+                ),
               ],
             ),
           ),
@@ -110,8 +152,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
     );
   }
-
-  Widget _buildChart() {
+  Widget _buildChart(MonthlyUsers monthlyUsers, WeeklyActivity weeklyActivity) {
     return SizedBox(
       height: 300,
       child: Card(
@@ -129,9 +170,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(child: _buildLineChart()),
+                    Expanded(child: _buildLineChart(monthlyUsers)),
                     const SizedBox(width: 16),
-                    Expanded(child: _buildBarChart()),
+                    Expanded(child: _buildBarChart(weeklyActivity)),
                   ],
                 ),
               ),
@@ -142,49 +183,82 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     ).animate().fadeIn(duration: 1000.ms).slideX();
   }
 
-  Widget _buildLineChart() {
+  Widget _buildLineChart(MonthlyUsers monthlyUsers) {
     return LineChart(
       LineChartData(
         gridData: const FlGridData(show: false),
-        titlesData: const FlTitlesData(show: false),
+        titlesData: FlTitlesData(
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              getTitlesWidget: (value, meta) {
+                final index = value.toInt();
+                if (index >= 0 && index < monthlyUsers.months.length) {
+                  return Text(monthlyUsers.months[index]);
+                }
+                return const Text('');
+              },
+            ),
+          ),
+          leftTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+        ),
         borderData: FlBorderData(show: false),
         lineBarsData: [
           LineChartBarData(
-            spots: [
-              const FlSpot(0, 3),
-              const FlSpot(2.6, 2),
-              const FlSpot(4.9, 5),
-              const FlSpot(6.8, 3.1),
-              const FlSpot(8, 4),
-              const FlSpot(9.5, 3),
-              const FlSpot(11, 4),
-            ],
+            spots: List.generate(
+              monthlyUsers.months.length,
+                  (index) => FlSpot(index.toDouble(), monthlyUsers.counts[index].toDouble()),
+            ),
             isCurved: true,
             color: Colors.blue,
             barWidth: 4,
             dotData: const FlDotData(show: false),
-            belowBarData:
-                BarAreaData(show: true, color: Colors.blue.withOpacity(0.1)),
+            belowBarData: BarAreaData(show: true, color: Colors.blue.withOpacity(0.1)),
           ),
         ],
       ),
     );
   }
-
-  Widget _buildBarChart() {
+  Widget _buildBarChart(WeeklyActivity weeklyActivity) {
     return BarChart(
       BarChartData(
         gridData: const FlGridData(show: false),
-        titlesData: const FlTitlesData(show: false),
+        titlesData: FlTitlesData(
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              getTitlesWidget: (value, meta) {
+                final index = value.toInt();
+                if (index >= 0 && index < weeklyActivity.days.length) {
+                  return Text(weeklyActivity.days[index]);
+                }
+                return const Text('');
+              },
+            ),
+          ),
+          leftTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+        ),
         borderData: FlBorderData(show: false),
-        barGroups: [
-          BarChartGroupData(x: 0, barRods: [BarChartRodData(toY: 8)]),
-          BarChartGroupData(x: 1, barRods: [BarChartRodData(toY: 10)]),
-          BarChartGroupData(x: 2, barRods: [BarChartRodData(toY: 14)]),
-          BarChartGroupData(x: 3, barRods: [BarChartRodData(toY: 15)]),
-          BarChartGroupData(x: 4, barRods: [BarChartRodData(toY: 13)]),
-          BarChartGroupData(x: 5, barRods: [BarChartRodData(toY: 18)]),
-        ],
+        barGroups: List.generate(
+          weeklyActivity.days.length,
+              (index) => BarChartGroupData(
+            x: index,
+            barRods: [
+              BarChartRodData(
+                toY: weeklyActivity.logins[index].toDouble(),
+                color: Colors.blue,
+              ),
+              BarChartRodData(
+                toY: weeklyActivity.registrations[index].toDouble(),
+                color: Colors.green,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

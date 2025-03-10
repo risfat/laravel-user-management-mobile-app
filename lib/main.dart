@@ -16,6 +16,7 @@ import 'core/utilities/logger.dart';
 import 'core/utilities/themes.dart';
 import 'presentation/bloc/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'presentation/bloc/auth/sign_up_form/sign_up_form_bloc.dart';
+import 'presentation/bloc/dashboard/dashboard_bloc.dart';
 
 void main() {
   logger.runLogging(
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
           create: (context) => di.getIt<UserBloc>(),
         ),
         BlocProvider(create: (_) => di.getIt<ThemeCubit>()),
+        BlocProvider(create: (_) => di.getIt<DashboardBloc>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {

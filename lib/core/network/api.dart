@@ -11,4 +11,7 @@ class API {
 
   // User Management
   static const USERS = '$BASE_URL/users';
+
+  // Dashboard
+  static const DASHBOARD = '$BASE_URL/dashboard';
 }

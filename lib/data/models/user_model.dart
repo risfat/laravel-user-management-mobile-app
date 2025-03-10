@@ -4,8 +4,8 @@ class UserModel extends User {
   final String? emailVerifiedAt;
   final String? createdAt;
   final String? updatedAt;
-  final String firstName;
-  final String lastName;
+  final String? firstName;
+  final String? lastName;
   final String? phone;
   final String? address;
   final String? city;
@@ -18,8 +18,8 @@ class UserModel extends User {
   final bool status;
   final String? profilePhotoPath;
   final String? twoFactorConfirmedAt;
-  final String profilePhotoUrl;
-  final String fullName;
+  final String? profilePhotoUrl;
+  final String? fullName;
 
   const UserModel({
     required int id,
@@ -28,8 +28,8 @@ class UserModel extends User {
     this.emailVerifiedAt,
     this.createdAt,
     this.updatedAt,
-    required this.firstName,
-    required this.lastName,
+    this.firstName,
+    this.lastName,
     this.phone,
     this.address,
     this.city,
@@ -42,8 +42,8 @@ class UserModel extends User {
     required this.status,
     this.profilePhotoPath,
     this.twoFactorConfirmedAt,
-    required this.profilePhotoUrl,
-    required this.fullName,
+    this.profilePhotoUrl,
+    this.fullName,
   }) : super(
           id: id,
           name: name,
@@ -53,7 +53,7 @@ class UserModel extends User {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
-      name: json['name'],
+      name: json['name'] ?? 'Unknown',
       email: json['email'],
       emailVerifiedAt: json['email_verified_at'],
       createdAt: json['created_at'],
@@ -73,7 +73,7 @@ class UserModel extends User {
       profilePhotoPath: json['profile_photo_path'],
       twoFactorConfirmedAt: json['two_factor_confirmed_at'],
       profilePhotoUrl: json['profile_photo_url'],
-      fullName: json['full_name'],
+      fullName: json['full_name'] ?? json['name'] ?? 'Unknown',
     );
   }
 

@@ -30,14 +30,14 @@ GoRouter routerInit = GoRouter(
       name: AppRoutes.loginRouteName,
       path: AppRoutes.loginRoutePath,
       builder: (BuildContext context, GoRouterState state) {
-        return SignInPage();
+        return const SignInPage();
       },
     ),
     GoRoute(
       name: AppRoutes.signupRouteName,
       path: AppRoutes.signupRoutePath,
       builder: (BuildContext context, GoRouterState state) {
-        return const SignUnPage();
+        return const SignUpPage();
       },
     ),
 

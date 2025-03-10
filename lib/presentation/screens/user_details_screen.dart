@@ -112,7 +112,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSectionTitle('Personal Information'),
-            _buildInfoRow(Icons.person, 'Full Name', user.fullName),
+            _buildInfoRow(
+                Icons.person, 'Full Name', user.fullName != null ? user.name : 'N/A'),
             _buildInfoRow(Icons.email, 'Email', user.email),
             _buildInfoRow(Icons.phone, 'Phone', user.phone ?? 'Not provided'),
             _buildInfoRow(

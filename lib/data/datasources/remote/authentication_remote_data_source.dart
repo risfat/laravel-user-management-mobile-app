@@ -53,6 +53,11 @@ class AuthenticationRemoteDataSourceImpl
           'password_confirmation': passwordConfirmation,
         },
       );
+      final String? accessToken = response.data['access_token'];
+      if (accessToken != null) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString(ACCESS_TOKEN, accessToken);
+      }
       return response.data;
     } catch (e) {
       throw Exception('Failed to register');

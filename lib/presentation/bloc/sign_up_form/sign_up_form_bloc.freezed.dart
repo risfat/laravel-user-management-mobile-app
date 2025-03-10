@@ -19,50 +19,64 @@ mixin _$SignUpFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() signInWithEmail,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? signInWithEmail,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? signInWithEmail,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignUpWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,9 +145,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() signInWithEmail,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
   }) {
     return initial();
   }
@@ -142,9 +158,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? signInWithEmail,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
   }) {
     return initial?.call();
   }
@@ -153,9 +171,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? signInWithEmail,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -168,9 +188,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignUpWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
   }) {
     return initial(this);
   }
@@ -179,9 +202,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
   }) {
     return initial?.call(this);
   }
@@ -190,9 +216,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -232,7 +260,7 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
 
   @override
   String toString() {
-    return 'SignUpFormEvent.signInWithEmail()';
+    return 'SignUpFormEvent.signUpWithEmail()';
   }
 
   @override
@@ -248,35 +276,41 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() signInWithEmail,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
   }) {
-    return signInWithEmail();
+    return signUpWithEmail();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? signInWithEmail,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
   }) {
-    return signInWithEmail?.call();
+    return signUpWithEmail?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? signInWithEmail,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
-    if (signInWithEmail != null) {
-      return signInWithEmail();
+    if (signUpWithEmail != null) {
+      return signUpWithEmail();
     }
     return orElse();
   }
@@ -285,35 +319,43 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignUpWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
   }) {
-    return signInWithEmail(this);
+    return signUpWithEmail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
   }) {
-    return signInWithEmail?.call(this);
+    return signUpWithEmail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
-    if (signInWithEmail != null) {
-      return signInWithEmail(this);
+    if (signUpWithEmail != null) {
+      return signUpWithEmail(this);
     }
     return orElse();
   }
@@ -321,6 +363,172 @@ class _$SignUpWithEmailImpl implements _SignUpWithEmail {
 
 abstract class _SignUpWithEmail implements SignUpFormEvent {
   const factory _SignUpWithEmail() = _$SignUpWithEmailImpl;
+}
+
+/// @nodoc
+abstract class _$$NameOnChangedImplCopyWith<$Res> {
+  factory _$$NameOnChangedImplCopyWith(
+          _$NameOnChangedImpl value, $Res Function(_$NameOnChangedImpl) then) =
+      __$$NameOnChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$NameOnChangedImplCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$NameOnChangedImpl>
+    implements _$$NameOnChangedImplCopyWith<$Res> {
+  __$$NameOnChangedImplCopyWithImpl(
+      _$NameOnChangedImpl _value, $Res Function(_$NameOnChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$NameOnChangedImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NameOnChangedImpl implements _NameOnChanged {
+  const _$NameOnChangedImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'SignUpFormEvent.nameOnChanged(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NameOnChangedImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NameOnChangedImplCopyWith<_$NameOnChangedImpl> get copyWith =>
+      __$$NameOnChangedImplCopyWithImpl<_$NameOnChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
+    required TResult Function(String email) emailOnChanged,
+    required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
+  }) {
+    return nameOnChanged(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
+    TResult? Function(String email)? emailOnChanged,
+    TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
+  }) {
+    return nameOnChanged?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
+    TResult Function(String email)? emailOnChanged,
+    TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (nameOnChanged != null) {
+      return nameOnChanged(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
+    required TResult Function(_EmailOnChanged value) emailOnChanged,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
+  }) {
+    return nameOnChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
+    TResult? Function(_EmailOnChanged value)? emailOnChanged,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
+  }) {
+    return nameOnChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
+    TResult Function(_EmailOnChanged value)? emailOnChanged,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (nameOnChanged != null) {
+      return nameOnChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NameOnChanged implements SignUpFormEvent {
+  const factory _NameOnChanged(final String name) = _$NameOnChangedImpl;
+
+  String get name;
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NameOnChangedImplCopyWith<_$NameOnChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -393,9 +601,11 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() signInWithEmail,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
   }) {
     return emailOnChanged(email);
   }
@@ -404,9 +614,11 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? signInWithEmail,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
   }) {
     return emailOnChanged?.call(email);
   }
@@ -415,9 +627,11 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? signInWithEmail,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -430,9 +644,12 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignUpWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
   }) {
     return emailOnChanged(this);
   }
@@ -441,9 +658,12 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
   }) {
     return emailOnChanged?.call(this);
   }
@@ -452,9 +672,11 @@ class _$EmailOnChangedImpl implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (emailOnChanged != null) {
@@ -547,9 +769,11 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() signInWithEmail,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
   }) {
     return passwordOnChanged(password);
   }
@@ -558,9 +782,11 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? signInWithEmail,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
   }) {
     return passwordOnChanged?.call(password);
   }
@@ -569,9 +795,11 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? signInWithEmail,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -584,9 +812,12 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_SignUpWithEmail value) signInWithEmail,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
   }) {
     return passwordOnChanged(this);
   }
@@ -595,9 +826,12 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
   }) {
     return passwordOnChanged?.call(this);
   }
@@ -606,9 +840,11 @@ class _$PasswordOnChangedImpl implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_SignUpWithEmail value)? signInWithEmail,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -632,11 +868,184 @@ abstract class _PasswordOnChanged implements SignUpFormEvent {
 }
 
 /// @nodoc
+abstract class _$$ConfirmPasswordOnChangedImplCopyWith<$Res> {
+  factory _$$ConfirmPasswordOnChangedImplCopyWith(
+          _$ConfirmPasswordOnChangedImpl value,
+          $Res Function(_$ConfirmPasswordOnChangedImpl) then) =
+      __$$ConfirmPasswordOnChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String confirmPassword});
+}
+
+/// @nodoc
+class __$$ConfirmPasswordOnChangedImplCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res, _$ConfirmPasswordOnChangedImpl>
+    implements _$$ConfirmPasswordOnChangedImplCopyWith<$Res> {
+  __$$ConfirmPasswordOnChangedImplCopyWithImpl(
+      _$ConfirmPasswordOnChangedImpl _value,
+      $Res Function(_$ConfirmPasswordOnChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? confirmPassword = null,
+  }) {
+    return _then(_$ConfirmPasswordOnChangedImpl(
+      null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmPasswordOnChangedImpl implements _ConfirmPasswordOnChanged {
+  const _$ConfirmPasswordOnChangedImpl(this.confirmPassword);
+
+  @override
+  final String confirmPassword;
+
+  @override
+  String toString() {
+    return 'SignUpFormEvent.confirmPasswordOnChanged(confirmPassword: $confirmPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmPasswordOnChangedImpl &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, confirmPassword);
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmPasswordOnChangedImplCopyWith<_$ConfirmPasswordOnChangedImpl>
+      get copyWith => __$$ConfirmPasswordOnChangedImplCopyWithImpl<
+          _$ConfirmPasswordOnChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() signUpWithEmail,
+    required TResult Function(String name) nameOnChanged,
+    required TResult Function(String email) emailOnChanged,
+    required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String confirmPassword) confirmPasswordOnChanged,
+  }) {
+    return confirmPasswordOnChanged(confirmPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? signUpWithEmail,
+    TResult? Function(String name)? nameOnChanged,
+    TResult? Function(String email)? emailOnChanged,
+    TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String confirmPassword)? confirmPasswordOnChanged,
+  }) {
+    return confirmPasswordOnChanged?.call(confirmPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? signUpWithEmail,
+    TResult Function(String name)? nameOnChanged,
+    TResult Function(String email)? emailOnChanged,
+    TResult Function(String password)? passwordOnChanged,
+    TResult Function(String confirmPassword)? confirmPasswordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordOnChanged != null) {
+      return confirmPasswordOnChanged(confirmPassword);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SignUpWithEmail value) signUpWithEmail,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
+    required TResult Function(_EmailOnChanged value) emailOnChanged,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_ConfirmPasswordOnChanged value)
+        confirmPasswordOnChanged,
+  }) {
+    return confirmPasswordOnChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
+    TResult? Function(_EmailOnChanged value)? emailOnChanged,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_ConfirmPasswordOnChanged value)?
+        confirmPasswordOnChanged,
+  }) {
+    return confirmPasswordOnChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SignUpWithEmail value)? signUpWithEmail,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
+    TResult Function(_EmailOnChanged value)? emailOnChanged,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_ConfirmPasswordOnChanged value)? confirmPasswordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordOnChanged != null) {
+      return confirmPasswordOnChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConfirmPasswordOnChanged implements SignUpFormEvent {
+  const factory _ConfirmPasswordOnChanged(final String confirmPassword) =
+      _$ConfirmPasswordOnChangedImpl;
+
+  String get confirmPassword;
+
+  /// Create a copy of SignUpFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConfirmPasswordOnChangedImplCopyWith<_$ConfirmPasswordOnChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SignUpFormState {
   RequestState get state => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String get confirmPassword => throw _privateConstructorUsedError;
 
   /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -652,7 +1061,12 @@ abstract class $SignUpFormStateCopyWith<$Res> {
       _$SignUpFormStateCopyWithImpl<$Res, SignUpFormState>;
   @useResult
   $Res call(
-      {RequestState state, String message, String email, String password});
+      {RequestState state,
+      String message,
+      String name,
+      String email,
+      String password,
+      String confirmPassword});
 }
 
 /// @nodoc
@@ -672,8 +1086,10 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
   $Res call({
     Object? state = null,
     Object? message = null,
+    Object? name = null,
     Object? email = null,
     Object? password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_value.copyWith(
       state: null == state
@@ -684,6 +1100,10 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -691,6 +1111,10 @@ class _$SignUpFormStateCopyWithImpl<$Res, $Val extends SignUpFormState>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -705,7 +1129,12 @@ abstract class _$$SignUpFormStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {RequestState state, String message, String email, String password});
+      {RequestState state,
+      String message,
+      String name,
+      String email,
+      String password,
+      String confirmPassword});
 }
 
 /// @nodoc
@@ -723,8 +1152,10 @@ class __$$SignUpFormStateImplCopyWithImpl<$Res>
   $Res call({
     Object? state = null,
     Object? message = null,
+    Object? name = null,
     Object? email = null,
     Object? password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_$SignUpFormStateImpl(
       state: null == state
@@ -735,6 +1166,10 @@ class __$$SignUpFormStateImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -742,6 +1177,10 @@ class __$$SignUpFormStateImplCopyWithImpl<$Res>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -753,21 +1192,27 @@ class _$SignUpFormStateImpl implements _SignUpFormState {
   const _$SignUpFormStateImpl(
       {required this.state,
       required this.message,
+      required this.name,
       required this.email,
-      required this.password});
+      required this.password,
+      required this.confirmPassword});
 
   @override
   final RequestState state;
   @override
   final String message;
   @override
+  final String name;
+  @override
   final String email;
   @override
   final String password;
+  @override
+  final String confirmPassword;
 
   @override
   String toString() {
-    return 'SignUpFormState(state: $state, message: $message, email: $email, password: $password)';
+    return 'SignUpFormState(state: $state, message: $message, name: $name, email: $email, password: $password, confirmPassword: $confirmPassword)';
   }
 
   @override
@@ -777,13 +1222,17 @@ class _$SignUpFormStateImpl implements _SignUpFormState {
             other is _$SignUpFormStateImpl &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state, message, email, password);
+  int get hashCode => Object.hash(
+      runtimeType, state, message, name, email, password, confirmPassword);
 
   /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -799,17 +1248,23 @@ abstract class _SignUpFormState implements SignUpFormState {
   const factory _SignUpFormState(
       {required final RequestState state,
       required final String message,
+      required final String name,
       required final String email,
-      required final String password}) = _$SignUpFormStateImpl;
+      required final String password,
+      required final String confirmPassword}) = _$SignUpFormStateImpl;
 
   @override
   RequestState get state;
   @override
   String get message;
   @override
+  String get name;
+  @override
   String get email;
   @override
   String get password;
+  @override
+  String get confirmPassword;
 
   /// Create a copy of SignUpFormState
   /// with the given fields replaced by the non-null parameter values.

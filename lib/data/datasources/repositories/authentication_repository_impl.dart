@@ -43,6 +43,7 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
     try {
       final result = await dataSource.register(
           name, email, password, passwordConfirmation);
+
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));

@@ -20,6 +20,7 @@ class _UsersPageState extends State<UsersPage> {
     context.read<UserBloc>().add(const GetUsersEvent(1));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +71,9 @@ class _UsersPageState extends State<UsersPage> {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
         leading: CircleAvatar(
-          child: Text(user.firstName[0]),
+          child: Text(user.name[0]),
         ),
-        title: Text('${user.firstName} ${user.lastName}'),
+        title: Text((user.firstName != null && user.lastName != null) ? ' ${user.firstName} ${user.lastName}' : user.name),
         subtitle: Text(user.email),
         trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {

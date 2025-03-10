@@ -14,10 +14,10 @@ class UserList extends StatelessWidget {
       itemBuilder: (context, index) {
         final user = users[index];
         return ListTile(
-          title: Text(user.firstName + '' + user.lastName),
+          title: Text(user.name),
           subtitle: Text(user.email),
           leading: CircleAvatar(
-            child: Text(user.firstName[0]),
+            child: Text(user.name[0]),
           ),
         );
       },

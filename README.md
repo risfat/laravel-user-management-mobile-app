@@ -1,79 +1,88 @@
-# Flutter Bloc Clean Architecture Boilerplate
 
-This is a Flutter project boilerplate that adheres to the principles of Clean Architecture. It is designed to help you jumpstart your Flutter projects by providing a structured and organized project setup. This boilerplate utilizes the BLoC state management pattern, GetIt for dependency injection, and Freezed for code generation.
+# Laravel User Management Mobile App
 
-## Project Structure
+## Project Overview
 
-The project follows a well-defined directory structure to keep your code organized and maintainable. Here's an overview of the key directories:
+The Laravel User Management Mobile App is a Flutter-based application designed to manage user data and interactions efficiently. This app leverages the power of the Flutter framework to provide a seamless cross-platform experience, supporting Android, iOS, web, Linux, macOS, and Windows platforms. The app integrates with a backend service, presumably built with Laravel, to handle user management functionalities.
 
-- **Src**: The main source code directory.
+## Features
 
-    - **Common**: Contains common files such as API endpoints, constants, exceptions, colors, screen sizes, and enums.
-
-    - **Data**: Responsible for data handling.
-
-        - **Datasource**: Data sources, such as API clients or databases.
-
-        - **Model**: Data models that represent your application's data.
-
-        - **Repository**: Data repositories, which abstract the data source.
-
-    - **Domain**: Contains the core business logic.
-
-        - **Entity**: Business entities or domain models.
-
-        - **Repository**: Interfaces that define how data is accessed in the domain layer.
-
-        - **Usecase**: Use cases that represent the application's business operations.
-
-    - **Presentation**: Handles the user interface and interaction.
-
-        - **Bloc**: BLoC classes responsible for managing the state of your application.
-
-        - **Cubit**: Cubit classes for more lightweight state management.
-
-        - **Page**: Flutter pages/screens.
-
-        - **Widget**: Reusable UI components.
-
-    - **Utilities**: Helper classes and utilities for the application.
-
-- **Injection.dart**: Dependency injection setup using GetIt.
-
-- **Main.dart**: The entry point of the Flutter application.
-
-## Project Demo
-
-<br/> <div style="text-align: center;"><img src="demo/app_demo.gif" width="250" alt="Demo"></div>
+- **User Authentication**: Secure login and registration functionalities.
+- **Profile Management**: Users can view and update their profile information.
+- **Network Connectivity**: Utilizes the `connectivity_plus` package to monitor network status and handle connectivity changes.
+- **State Management**: Implements the BLoC pattern using `flutter_bloc` for efficient state management.
+- **Data Persistence**: Uses `shared_preferences` and `hive_flutter` for local data storage.
+- **UI Components**: Rich UI components with `flutter_spinkit`, `google_fonts`, and `font_awesome_flutter`.
+- **Form Validation**: Validates user input using `form_field_validator`.
+- **Routing**: Manages navigation with `go_router`.
+- **Logging**: Provides logging capabilities with the `logger` package.
+- **Charts and Calendars**: Visualizes data using `fl_chart` and `table_calendar`.
 
 ## Getting Started
 
-1. Clone this repository to your local machine:
+To get started with this project, follow these steps:
 
-   ```shell
-   git clone https://github.com/risfat/flutter-bloc-clean-architecture-boilerplate
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/risfat/laravel-user-management-mobile-app
+   cd laravel-user-management-mobile-app
+   ```
 
-2. Navigate to the project directory:
+2. **Install Dependencies**:
+   ```bash
+   flutter pub get
+   ```
 
-   ```shell
-   cd flutter-bloc-clean-architecture-boilerplate
+3. **Run the App**:
+   ```bash
+   flutter run
+   ```
 
-3. Install dependencies using Flutter's package manager:
+## Project Structure
 
-   ```shell
-    flutter pub get
-   
-You can now start building your application using this clean architecture boilerplate.
+- **lib**: Contains the main source code of the application.
+    - **core**: Core configurations and utility classes.
+    - **data**: Data-related classes and models.
+    - **di**: Dependency injection setup using `get_it`.
+    - **domain**: Domain-specific entities and repositories.
+    - **presentation**: UI components, BLoCs, and widgets.
 
-## Features
-- Structured and organized project setup.
-- Clean Architecture pattern.
-- BLoC state management.
-- GetIt for dependency injection.
-- Freezed for code generation.
+- **test**: Contains unit and widget tests to ensure the app's functionality.
 
-## Contributing
-Feel free to contribute to this project by submitting issues or pull requests. If you have any suggestions or improvements, we welcome your contributions.
+## Dependencies
 
+- **Main Dependencies**:
+    - `flutter`: Core SDK for building Flutter applications.
+    - `connectivity_plus`: Manages network connectivity.
+    - `shared_preferences`: Stores simple data persistently.
+    - `dio`: Handles HTTP requests.
+    - `flutter_bloc`: Implements the BLoC pattern for state management.
+    - `hive_flutter`: Lightweight and fast key-value database.
+    - `go_router`: Simplifies navigation and routing.
 
-Happy coding! 🚀
+- **Dev Dependencies**:
+    - `flutter_test`: Provides testing utilities.
+    - `very_good_analysis`: Ensures code quality and style.
+    - `mocktail` and `mockito`: Used for mocking in tests.
+    - `build_runner`: Generates code for data classes and serialization.
+
+## Configuration
+
+- **Versioning**: The app follows semantic versioning. The current version is `1.0.0+1`.
+- **Environment**: Compatible with Dart SDK `>=3.0.6 <4.0.0`.
+
+## Additional Information
+
+- **Platform Support**: The app is designed to run on multiple platforms, including Android, iOS, web, Linux, macOS, and Windows.
+- **Testing**: The project includes a suite of tests to ensure reliability and correctness.
+- **Customization**: The app can be customized by modifying the Flutter widgets and BLoC components in the `presentation` layer.
+
+## Contribution
+
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---

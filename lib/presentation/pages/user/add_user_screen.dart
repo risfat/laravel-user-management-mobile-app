@@ -2,55 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-import '../../data/models/user_model.dart';
-import '../bloc/user/user_bloc.dart';
-import '../bloc/user/user_event.dart';
-import '../bloc/user/user_state.dart';
-import '../widgets/custom_elevated_button.dart';
+import '../../bloc/user/user_bloc.dart';
+import '../../bloc/user/user_event.dart';
+import '../../bloc/user/user_state.dart';
+import '../../widgets/custom_elevated_button.dart';
 
-class UpdateUserPage extends StatefulWidget {
-  final UserModel user;
-
-  const UpdateUserPage({Key? key, required this.user}) : super(key: key);
+class AddUserPage extends StatefulWidget {
+  const AddUserPage({Key? key}) : super(key: key);
 
   @override
-  _UpdateUserPageState createState() => _UpdateUserPageState();
+  _AddUserPageState createState() => _AddUserPageState();
 }
 
-class _UpdateUserPageState extends State<UpdateUserPage> {
+class _AddUserPageState extends State<AddUserPage> {
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  late TextEditingController _passwordController;
-  late TextEditingController _phoneController;
-  late TextEditingController _addressController;
-  late TextEditingController _cityController;
-  late TextEditingController _stateController;
-  late TextEditingController _countryController;
-  late TextEditingController _zipCodeController;
-  late TextEditingController _bioController;
-  late DateTime? _dateOfBirth;
-  late String? _gender;
-
-  @override
-  void initState() {
-    super.initState();
-    _nameController =
-        TextEditingController(text: widget.user.fullName ?? widget.user.name);
-    _emailController = TextEditingController(text: widget.user.email);
-    _passwordController = TextEditingController();
-    _phoneController = TextEditingController(text: widget.user.phone);
-    _addressController = TextEditingController(text: widget.user.address);
-    _cityController = TextEditingController(text: widget.user.city);
-    _stateController = TextEditingController(text: widget.user.state);
-    _countryController = TextEditingController(text: widget.user.country);
-    _zipCodeController = TextEditingController(text: widget.user.zipCode);
-    _bioController = TextEditingController(text: widget.user.bio);
-    _dateOfBirth = widget.user.dateOfBirth != null
-        ? DateTime.tryParse(widget.user.dateOfBirth!)
-        : null;
-    _gender = widget.user.gender;
-  }
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _stateController = TextEditingController();
+  final _countryController = TextEditingController();
+  final _zipCodeController = TextEditingController();
+  final _bioController = TextEditingController();
+  DateTime? _dateOfBirth;
+  String? _gender;
 
   @override
   void dispose() {
@@ -71,7 +48,7 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update User'),
+        title: const Text('Add New User'),
       ),
       body: BlocListener<UserBloc, UserState>(
         listener: (context, state) {
@@ -116,9 +93,14 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                 ),
                 TextFormField(
                   controller: _passwordController,
-                  decoration:
-                      const InputDecoration(labelText: 'Password (optional)'),
+                  decoration: const InputDecoration(labelText: 'Password'),
                   obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a password';
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   controller: _phoneController,
@@ -168,11 +150,11 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                   onTap: () async {
                     final DateTime? picked = await showDatePicker(
                       context: context,
-                      initialDate: _dateOfBirth ?? DateTime.now(),
+                      initialDate: DateTime.now(),
                       firstDate: DateTime(1900),
                       lastDate: DateTime.now(),
                     );
-                    if (picked != null && picked != _dateOfBirth) {
+                    if (picked != null) {
                       setState(() {
                         _dateOfBirth = picked;
                       });
@@ -191,28 +173,25 @@ class _UpdateUserPageState extends State<UpdateUserPage> {
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<UserBloc>().add(
-                                UpdateUserEvent(
-                                  userId: widget.user.id,
+                                CreateUserEvent(
                                   name: _nameController.text,
                                   email: _emailController.text,
-                                  password: _passwordController.text.isNotEmpty
-                                      ? _passwordController.text
-                                      : null,
+                                  password: _passwordController.text,
                                   phone: _phoneController.text,
                                   address: _addressController.text,
                                   city: _cityController.text,
                                   state: _stateController.text,
                                   country: _countryController.text,
                                   zipCode: _zipCodeController.text,
-                                  dateOfBirth: _dateOfBirth,
-                                  gender: _gender,
+                                  dateOfBirth: _dateOfBirth ?? DateTime.now(),
+                                  gender: _gender ?? 'other',
                                   bio: _bioController.text,
                                 ),
                               );
                         }
                       },
                       isLoading: state.isLoading,
-                      label: 'Update User',
+                      label: 'Add User',
                     );
                   },
                 ),

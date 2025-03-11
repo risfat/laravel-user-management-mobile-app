@@ -19,7 +19,6 @@ class UserModel extends User {
   final String? profilePhotoPath;
   final String? twoFactorConfirmedAt;
   final String? profilePhotoUrl;
-  final String? fullName;
 
   const UserModel({
     required int id,
@@ -43,7 +42,6 @@ class UserModel extends User {
     this.profilePhotoPath,
     this.twoFactorConfirmedAt,
     this.profilePhotoUrl,
-    this.fullName,
   }) : super(
           id: id,
           name: name,
@@ -52,29 +50,27 @@ class UserModel extends User {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'],
-      name: json['name'] ?? 'Unknown',
-      email: json['email'],
-      emailVerifiedAt: json['email_verified_at'],
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      phone: json['phone'],
-      address: json['address'],
-      city: json['city'],
-      state: json['state'],
-      country: json['country'],
-      zipCode: json['zip_code'],
-      dateOfBirth: json['date_of_birth'],
-      gender: json['gender'],
-      bio: json['bio'],
-      status: json['status'] ?? false,
-      profilePhotoPath: json['profile_photo_path'],
-      twoFactorConfirmedAt: json['two_factor_confirmed_at'],
-      profilePhotoUrl: json['profile_photo_url'],
-      fullName: json['full_name'] ?? 'Unknown',
-    );
+        id: json['id'],
+        name: json['name'] ?? 'Unknown',
+        email: json['email'],
+        emailVerifiedAt: json['email_verified_at'],
+        createdAt: json['created_at'],
+        updatedAt: json['updated_at'],
+        firstName: json['first_name'],
+        lastName: json['last_name'],
+        phone: json['phone'],
+        address: json['address'],
+        city: json['city'],
+        state: json['state'],
+        country: json['country'],
+        zipCode: json['zip_code'],
+        dateOfBirth: json['date_of_birth'],
+        gender: json['gender'],
+        bio: json['bio'],
+        status: json['status'] ?? false,
+        profilePhotoPath: json['profile_photo_path'],
+        twoFactorConfirmedAt: json['two_factor_confirmed_at'],
+        profilePhotoUrl: json['profile_photo_url']);
   }
 
   Map<String, dynamic> toJson() {
@@ -100,7 +96,6 @@ class UserModel extends User {
       'profile_photo_path': profilePhotoPath,
       'two_factor_confirmed_at': twoFactorConfirmedAt,
       'profile_photo_url': profilePhotoUrl,
-      'full_name': fullName,
     };
   }
 }

@@ -97,9 +97,7 @@ class _UsersPageState extends State<UsersPage> {
           ),
         ),
         title: Text(
-          (user.firstName != null && user.lastName != null)
-              ? '${user.firstName} ${user.lastName}'
-              : user.name,
+          user.name,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(

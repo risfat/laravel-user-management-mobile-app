@@ -67,7 +67,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
-          user.fullName ?? 'N/A',
+          user.name,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white),
@@ -113,7 +113,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSectionTitle('Personal Information'),
-            _buildInfoRow(Icons.person, 'Full Name', user.fullName ?? "N/A"),
+            _buildInfoRow(Icons.person, 'Full Name', user.name),
             _buildInfoRow(Icons.email, 'Email', user.email),
             _buildInfoRow(Icons.phone, 'Phone', user.phone ?? 'Not provided'),
             _buildInfoRow(

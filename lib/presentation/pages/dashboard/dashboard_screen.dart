@@ -69,9 +69,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Welcome back, ${data.stats.userName}!',
-                      style:
-                          const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      'Welcome back, ${data.userName}!',
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold),
                     ).animate().fadeIn(duration: 600.ms).slideX(),
                     const SizedBox(height: 24),
                     _buildStatCards(data.stats),

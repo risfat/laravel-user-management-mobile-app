@@ -13,6 +13,7 @@ _$DashboardDataImpl _$$DashboardDataImplFromJson(Map<String, dynamic> json) =>
       weeklyActivity: WeeklyActivity.fromJson(
           json['weeklyActivity'] as Map<String, dynamic>),
       stats: Stats.fromJson(json['stats'] as Map<String, dynamic>),
+      userName: json['userName'] as String,
     );
 
 Map<String, dynamic> _$$DashboardDataImplToJson(_$DashboardDataImpl instance) =>
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$DashboardDataImplToJson(_$DashboardDataImpl instance) =>
       'monthlyUsers': instance.monthlyUsers,
       'weeklyActivity': instance.weeklyActivity,
       'stats': instance.stats,
+      'userName': instance.userName,
     };
 
 _$MonthlyUsersImpl _$$MonthlyUsersImplFromJson(Map<String, dynamic> json) =>
@@ -63,7 +65,6 @@ _$StatsImpl _$$StatsImplFromJson(Map<String, dynamic> json) => _$StatsImpl(
       thisMonth: (json['thisMonth'] as num).toInt(),
       lastMonth: (json['lastMonth'] as num).toInt(),
       growth: (json['growth'] as num).toDouble(),
-      userName: json['userName'] as String,
     );
 
 Map<String, dynamic> _$$StatsImplToJson(_$StatsImpl instance) =>
@@ -74,5 +75,4 @@ Map<String, dynamic> _$$StatsImplToJson(_$StatsImpl instance) =>
       'thisMonth': instance.thisMonth,
       'lastMonth': instance.lastMonth,
       'growth': instance.growth,
-      'userName': instance.userName,
     };

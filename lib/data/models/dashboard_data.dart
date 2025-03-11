@@ -9,6 +9,7 @@ class DashboardData with _$DashboardData {
     required MonthlyUsers monthlyUsers,
     required WeeklyActivity weeklyActivity,
     required Stats stats,
+    required String userName,
   }) = _DashboardData;
 
   factory DashboardData.fromJson(Map<String, dynamic> json) =>
@@ -47,7 +48,6 @@ class Stats with _$Stats {
     required int thisMonth,
     required int lastMonth,
     required double growth,
-    required String userName,
   }) = _Stats;
 
   factory Stats.fromJson(Map<String, dynamic> json) => _$StatsFromJson(json);

@@ -23,6 +23,7 @@ mixin _$DashboardData {
   MonthlyUsers get monthlyUsers => throw _privateConstructorUsedError;
   WeeklyActivity get weeklyActivity => throw _privateConstructorUsedError;
   Stats get stats => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
 
   /// Serializes this DashboardData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +42,10 @@ abstract class $DashboardDataCopyWith<$Res> {
       _$DashboardDataCopyWithImpl<$Res, DashboardData>;
   @useResult
   $Res call(
-      {MonthlyUsers monthlyUsers, WeeklyActivity weeklyActivity, Stats stats});
+      {MonthlyUsers monthlyUsers,
+      WeeklyActivity weeklyActivity,
+      Stats stats,
+      String userName});
 
   $MonthlyUsersCopyWith<$Res> get monthlyUsers;
   $WeeklyActivityCopyWith<$Res> get weeklyActivity;
@@ -66,6 +70,7 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
     Object? monthlyUsers = null,
     Object? weeklyActivity = null,
     Object? stats = null,
+    Object? userName = null,
   }) {
     return _then(_value.copyWith(
       monthlyUsers: null == monthlyUsers
@@ -80,6 +85,10 @@ class _$DashboardDataCopyWithImpl<$Res, $Val extends DashboardData>
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as Stats,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -123,7 +132,10 @@ abstract class _$$DashboardDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {MonthlyUsers monthlyUsers, WeeklyActivity weeklyActivity, Stats stats});
+      {MonthlyUsers monthlyUsers,
+      WeeklyActivity weeklyActivity,
+      Stats stats,
+      String userName});
 
   @override
   $MonthlyUsersCopyWith<$Res> get monthlyUsers;
@@ -149,6 +161,7 @@ class __$$DashboardDataImplCopyWithImpl<$Res>
     Object? monthlyUsers = null,
     Object? weeklyActivity = null,
     Object? stats = null,
+    Object? userName = null,
   }) {
     return _then(_$DashboardDataImpl(
       monthlyUsers: null == monthlyUsers
@@ -163,6 +176,10 @@ class __$$DashboardDataImplCopyWithImpl<$Res>
           ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as Stats,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -173,7 +190,8 @@ class _$DashboardDataImpl implements _DashboardData {
   _$DashboardDataImpl(
       {required this.monthlyUsers,
       required this.weeklyActivity,
-      required this.stats});
+      required this.stats,
+      required this.userName});
 
   factory _$DashboardDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DashboardDataImplFromJson(json);
@@ -184,10 +202,12 @@ class _$DashboardDataImpl implements _DashboardData {
   final WeeklyActivity weeklyActivity;
   @override
   final Stats stats;
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'DashboardData(monthlyUsers: $monthlyUsers, weeklyActivity: $weeklyActivity, stats: $stats)';
+    return 'DashboardData(monthlyUsers: $monthlyUsers, weeklyActivity: $weeklyActivity, stats: $stats, userName: $userName)';
   }
 
   @override
@@ -199,13 +219,15 @@ class _$DashboardDataImpl implements _DashboardData {
                 other.monthlyUsers == monthlyUsers) &&
             (identical(other.weeklyActivity, weeklyActivity) ||
                 other.weeklyActivity == weeklyActivity) &&
-            (identical(other.stats, stats) || other.stats == stats));
+            (identical(other.stats, stats) || other.stats == stats) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, monthlyUsers, weeklyActivity, stats);
+      Object.hash(runtimeType, monthlyUsers, weeklyActivity, stats, userName);
 
   /// Create a copy of DashboardData
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +249,8 @@ abstract class _DashboardData implements DashboardData {
   factory _DashboardData(
       {required final MonthlyUsers monthlyUsers,
       required final WeeklyActivity weeklyActivity,
-      required final Stats stats}) = _$DashboardDataImpl;
+      required final Stats stats,
+      required final String userName}) = _$DashboardDataImpl;
 
   factory _DashboardData.fromJson(Map<String, dynamic> json) =
       _$DashboardDataImpl.fromJson;
@@ -238,6 +261,8 @@ abstract class _DashboardData implements DashboardData {
   WeeklyActivity get weeklyActivity;
   @override
   Stats get stats;
+  @override
+  String get userName;
 
   /// Create a copy of DashboardData
   /// with the given fields replaced by the non-null parameter values.
@@ -656,7 +681,6 @@ mixin _$Stats {
   int get thisMonth => throw _privateConstructorUsedError;
   int get lastMonth => throw _privateConstructorUsedError;
   double get growth => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
 
   /// Serializes this Stats to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -678,8 +702,7 @@ abstract class $StatsCopyWith<$Res> {
       int unverified,
       int thisMonth,
       int lastMonth,
-      double growth,
-      String userName});
+      double growth});
 }
 
 /// @nodoc
@@ -703,7 +726,6 @@ class _$StatsCopyWithImpl<$Res, $Val extends Stats>
     Object? thisMonth = null,
     Object? lastMonth = null,
     Object? growth = null,
-    Object? userName = null,
   }) {
     return _then(_value.copyWith(
       total: null == total
@@ -730,10 +752,6 @@ class _$StatsCopyWithImpl<$Res, $Val extends Stats>
           ? _value.growth
           : growth // ignore: cast_nullable_to_non_nullable
               as double,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -751,8 +769,7 @@ abstract class _$$StatsImplCopyWith<$Res> implements $StatsCopyWith<$Res> {
       int unverified,
       int thisMonth,
       int lastMonth,
-      double growth,
-      String userName});
+      double growth});
 }
 
 /// @nodoc
@@ -774,7 +791,6 @@ class __$$StatsImplCopyWithImpl<$Res>
     Object? thisMonth = null,
     Object? lastMonth = null,
     Object? growth = null,
-    Object? userName = null,
   }) {
     return _then(_$StatsImpl(
       total: null == total
@@ -801,10 +817,6 @@ class __$$StatsImplCopyWithImpl<$Res>
           ? _value.growth
           : growth // ignore: cast_nullable_to_non_nullable
               as double,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -818,8 +830,7 @@ class _$StatsImpl implements _Stats {
       required this.unverified,
       required this.thisMonth,
       required this.lastMonth,
-      required this.growth,
-      required this.userName});
+      required this.growth});
 
   factory _$StatsImpl.fromJson(Map<String, dynamic> json) =>
       _$$StatsImplFromJson(json);
@@ -836,12 +847,10 @@ class _$StatsImpl implements _Stats {
   final int lastMonth;
   @override
   final double growth;
-  @override
-  final String userName;
 
   @override
   String toString() {
-    return 'Stats(total: $total, verified: $verified, unverified: $unverified, thisMonth: $thisMonth, lastMonth: $lastMonth, growth: $growth, userName: $userName)';
+    return 'Stats(total: $total, verified: $verified, unverified: $unverified, thisMonth: $thisMonth, lastMonth: $lastMonth, growth: $growth)';
   }
 
   @override
@@ -858,15 +867,13 @@ class _$StatsImpl implements _Stats {
                 other.thisMonth == thisMonth) &&
             (identical(other.lastMonth, lastMonth) ||
                 other.lastMonth == lastMonth) &&
-            (identical(other.growth, growth) || other.growth == growth) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName));
+            (identical(other.growth, growth) || other.growth == growth));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, total, verified, unverified,
-      thisMonth, lastMonth, growth, userName);
+  int get hashCode => Object.hash(
+      runtimeType, total, verified, unverified, thisMonth, lastMonth, growth);
 
   /// Create a copy of Stats
   /// with the given fields replaced by the non-null parameter values.
@@ -891,8 +898,7 @@ abstract class _Stats implements Stats {
       required final int unverified,
       required final int thisMonth,
       required final int lastMonth,
-      required final double growth,
-      required final String userName}) = _$StatsImpl;
+      required final double growth}) = _$StatsImpl;
 
   factory _Stats.fromJson(Map<String, dynamic> json) = _$StatsImpl.fromJson;
 
@@ -908,8 +914,6 @@ abstract class _Stats implements Stats {
   int get lastMonth;
   @override
   double get growth;
-  @override
-  String get userName;
 
   /// Create a copy of Stats
   /// with the given fields replaced by the non-null parameter values.

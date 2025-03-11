@@ -48,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 100),
                       _buildHeader(context),
                       const SizedBox(height: SPACE25),
                       CustomTextFormField(

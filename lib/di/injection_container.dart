@@ -68,7 +68,12 @@ void setupSynchronousRegistrations() {
   );
 
   // External
-  getIt.registerLazySingleton(() => InternetConnectionChecker.instance);
+  getIt.registerLazySingleton(() => InternetConnectionChecker.createInstance(
+        slowConnectionConfig: const SlowConnectionConfig(
+          enableToCheckForSlowConnection: false,
+          slowConnectionThreshold: Duration(seconds: 1),
+        ),
+      ));
   getIt.registerLazySingleton(() => DioClient.instance);
 
   // Network

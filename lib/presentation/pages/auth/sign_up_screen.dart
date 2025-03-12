@@ -119,8 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         },
                       ),
                       const SizedBox(height: SPACE25),
-                      _buildForgotPassword(context),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: SPACE12),
                       CustomElevatedButton(
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
@@ -174,24 +173,6 @@ class _SignUpPageState extends State<SignUpPage> {
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildForgotPassword(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: GestureDetector(
-        onTap: () {
-          // Navigator.pushNamed(
-          //   context,
-          //   FORGOT_PASSWORD,
-          // );
-        },
-        child: Text(
-          'Forgot Password?',
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
       ),
     );
   }

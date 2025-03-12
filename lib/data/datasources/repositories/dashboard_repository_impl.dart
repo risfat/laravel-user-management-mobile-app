@@ -18,16 +18,14 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   @override
   Future<Either<Failure, DashboardData>> getDashboardData() async {
-    if (await networkInfo.isConnected) {
-      try {
-        final data = await remoteDataSource.getDashboardData();
-        // await localDataSource.cacheUser(createdUser);
-        return Right(data);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to create user'));
-      }
-    } else {
-      return const Left(ConnectionFailure('No internet connection'));
+    try {
+      print(
+          "\n\n =============Fetching dashboard data...(Level 2)================  \n\n");
+      final data = await remoteDataSource.getDashboardData();
+      // await localDataSource.cacheUser(createdUser);
+      return Right(data);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to create user'));
     }
   }
 }

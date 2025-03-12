@@ -17,6 +17,8 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         fetchDashboardData: () async {
           emit(const DashboardState.loading());
           try {
+            print(
+                "\n\n =============Fetching dashboard data...(Level 1)================  \n\n");
             final data = await _repository.getDashboardData();
             data.fold(
                 (_) => emit(const DashboardState.error(

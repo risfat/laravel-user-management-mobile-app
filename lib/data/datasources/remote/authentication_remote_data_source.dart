@@ -36,7 +36,7 @@ class AuthenticationRemoteDataSourceImpl
       }
       return response.data;
     } catch (e) {
-      throw Exception('Failed to login');
+      rethrow;
     }
   }
 
@@ -60,7 +60,7 @@ class AuthenticationRemoteDataSourceImpl
       }
       return response.data;
     } catch (e) {
-      throw Exception('Failed to register');
+      rethrow;
     }
   }
 
@@ -69,7 +69,7 @@ class AuthenticationRemoteDataSourceImpl
     try {
       await dio.post(API.LOGOUT);
     } catch (e) {
-      throw Exception('Failed to logout');
+      rethrow;
     }
   }
 

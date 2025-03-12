@@ -50,7 +50,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
           .map((userData) => UserModel.fromJson(userData))
           .toList();
     } catch (e) {
-      throw Exception('Failed to get users list');
+      rethrow;
     }
   }
 
@@ -60,7 +60,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       final response = await dio.get('${API.USERS}/$id');
       return UserModel.fromJson(response.data);
     } catch (e) {
-      throw Exception('Failed to get user');
+      rethrow;
     }
   }
 
@@ -98,14 +98,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       );
       return UserModel.fromJson(response.data);
     } catch (e) {
-      if (e is DioException) {
-        print("Error creating user: ${e.message}");
-        print("Status code: ${e.response?.statusCode}");
-        print("Response data: ${e.response?.data}");
-      } else {
-        print("Error creating user: $e");
-      }
-      throw Exception('Failed to create user');
+      rethrow;
     }
   }
 
@@ -155,7 +148,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         );
       }
     } catch (e) {
-      throw ServerException('Failed to update user');
+      rethrow;
     }
   }
 

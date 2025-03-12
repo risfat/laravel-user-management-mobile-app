@@ -15,6 +15,8 @@ class DashboardRemoteDataSourceImpl implements DashboardRemoteDataSource {
   @override
   Future<DashboardData> getDashboardData() async {
     try {
+      print(
+          "\n\n =============Fetching dashboard data...(Level 3)================  \n\n");
       final response = await dio.get(API.DASHBOARD);
       return DashboardData.fromJson(response.data);
     } catch (e) {

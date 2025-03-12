@@ -31,51 +31,36 @@ class UserRepositoryImpl implements UserRepository {
       DateTime? dateOfBirth,
       String? gender,
       String? bio}) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final createdUser = await remoteDataSource.createUser(
-          name,
-          email,
-          password,
-          phone: phone,
-          address: address,
-          city: city,
-          state: state,
-          country: country,
-          zipCode: zipCode,
-          dateOfBirth: dateOfBirth,
-          gender: gender,
-          bio: bio,
-        );
-        // await localDataSource.cacheUser(createdUser);
-        return Right(createdUser);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to create user'));
-      }
-    } else {
-      return const Left(ConnectionFailure('No internet connection'));
+    try {
+      final createdUser = await remoteDataSource.createUser(
+        name,
+        email,
+        password,
+        phone: phone,
+        address: address,
+        city: city,
+        state: state,
+        country: country,
+        zipCode: zipCode,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        bio: bio,
+      );
+      // await localDataSource.cacheUser(createdUser);
+      return Right(createdUser);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to create user'));
     }
   }
 
   @override
   Future<Either<Failure, UserModel>> getUser(int id) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final user = await remoteDataSource.getUser(id);
-        // await localDataSource.cacheUser(user);
-        return Right(user);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to fetch user'));
-      }
-    } else {
-      return const Left(ServerFailure('Failed to fetch user'));
-      // try {
-      //   final user = await localDataSource.getUser(id);
-      //   return Right(user);
-      // } on CacheException catch (e) {
-      //   return Left(
-      //       CacheFailure(e.message ?? 'Failed to retrieve cached user'));
-      // }
+    try {
+      final user = await remoteDataSource.getUser(id);
+      // await localDataSource.cacheUser(user);
+      return Right(user);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to fetch user'));
     }
   }
 
@@ -96,68 +81,50 @@ class UserRepositoryImpl implements UserRepository {
     String? gender,
     String? bio,
   }) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final updatedUser = await remoteDataSource.updateUser(
-          id,
-          email: email,
-          name: name,
-          password: password,
-          role: role,
-          phone: phone,
-          address: address,
-          city: city,
-          state: state,
-          country: country,
-          zipCode: zipCode,
-          dateOfBirth: dateOfBirth,
-          gender: gender,
-          bio: bio,
-        );
-        // await localDataSource.cacheUser(updatedUser);
-        return Right(updatedUser);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to update user'));
-      }
-    } else {
-      return const Left(ConnectionFailure('No internet connection'));
+    try {
+      final updatedUser = await remoteDataSource.updateUser(
+        id,
+        email: email,
+        name: name,
+        password: password,
+        role: role,
+        phone: phone,
+        address: address,
+        city: city,
+        state: state,
+        country: country,
+        zipCode: zipCode,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        bio: bio,
+      );
+      // await localDataSource.cacheUser(updatedUser);
+      return Right(updatedUser);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to update user'));
     }
   }
 
   @override
   Future<Either<Failure, void>> deleteUser(int id) async {
-    if (await networkInfo.isConnected) {
-      try {
-        await remoteDataSource.deleteUser(id);
-        // await localDataSource.removeUser(id);
-        return const Right(null);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to delete user'));
-      }
-    } else {
-      return const Left(ConnectionFailure('No internet connection'));
+    try {
+      await remoteDataSource.deleteUser(id);
+      // await localDataSource.removeUser(id);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to delete user'));
     }
   }
 
   @override
   Future<Either<Failure, List<UserModel>>> getUsersList(int page) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final users = await remoteDataSource.listUsers(page);
-        // await localDataSource.cacheUsers(
-        //     users, 1);
-        return Right(users);
-      } on ServerException catch (e) {
-        return Left(ServerFailure(e.message ?? 'Failed to list users'));
-      }
-    } else {
-      return const Left(ServerFailure('Failed to get the users list'));
-      // try {
-      //   final users = await localDataSource.listUsers();
-      //   return Right(users);
-      // } on CacheException catch (e) {
-      //   return Left(CacheFailure(e.message ?? 'Failed to retrieve cached users list'));
-      // }
+    try {
+      final users = await remoteDataSource.listUsers(page);
+      // await localDataSource.cacheUsers(
+      //     users, 1);
+      return Right(users);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message ?? 'Failed to list users'));
     }
   }
 }
